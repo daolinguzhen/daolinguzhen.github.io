@@ -530,3 +530,9 @@ article h1 {
 article .catalogue {
 	margin: auto!important;
 }
+
+p {
+  text-indent: 2em; /* 首行缩进2个字符 */
+  text-align: justify; /* 两端对齐 */
+  text-justify: newspaper; /* 悬挂缩进 */
+}
