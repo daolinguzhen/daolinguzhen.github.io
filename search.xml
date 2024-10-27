@@ -14,11 +14,11 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% echarts 400 &#x27;85%&#x27; %&#125;</span><br><span class="line">这中间放ECharts代码</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
 
 <p>&ensp;&ensp;&ensp;&ensp;代码内容可自己编写，也可以去<a href="https://echarts.apache.org/examples/zh/index.html">ECharts官网</a>复制，然后粘贴到这里。以下是“雷达图浏览器占比变化”示例操作<sub>（其它图表操作一样）</sub>：</p>
-<div id="echarts3177" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<div id="echarts3093" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts3177'));
+        var myChart = echarts.init(document.getElementById('echarts3093'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -97,11 +97,11 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo博客NexT主题使用ECharts功能</span><br><span class="line">date: 2024-10-24 15:51:06</span><br><span class="line">categories:</span><br><span class="line">  - Hexo博客</span><br><span class="line">  - NexT主题</span><br><span class="line">tags:</span><br><span class="line">  - 博客搭建</span><br><span class="line">  - 主题配置</span><br><span class="line">  - 经验技巧</span><br><span class="line">---</span><br><span class="line">&#123;% echarts 400 &#x27;85%&#x27; %&#125;</span><br><span class="line">option = &#123;</span><br><span class="line">  title: &#123;</span><br><span class="line">    text: &#x27;浏览器比例&#x27;,</span><br><span class="line">    subtext: &#x27;假数据&#x27;,</span><br><span class="line">    top: 10,</span><br><span class="line">    left: 10</span><br><span class="line">  &#125;,</span><br><span class="line">  tooltip: &#123;</span><br><span class="line">    trigger: &#x27;item&#x27;</span><br><span class="line">  &#125;,</span><br><span class="line">  legend: &#123;</span><br><span class="line">    type: &#x27;scroll&#x27;,</span><br><span class="line">    bottom: 10,</span><br><span class="line">    data: (function () &#123;</span><br><span class="line">      var list = [];</span><br><span class="line">      for (var i = 1; i &lt;= 28; i++) &#123;</span><br><span class="line">        list.push(i + 2000 + &#x27;&#x27;);</span><br><span class="line">      &#125;</span><br><span class="line">      return list;</span><br><span class="line">    &#125;)()</span><br><span class="line">  &#125;,</span><br><span class="line">  visualMap: &#123;</span><br><span class="line">    top: &#x27;middle&#x27;,</span><br><span class="line">    right: 10,</span><br><span class="line">    color: [&#x27;red&#x27;, &#x27;yellow&#x27;],</span><br><span class="line">    calculable: true</span><br><span class="line">  &#125;,</span><br><span class="line">  radar: &#123;</span><br><span class="line">    indicator: [</span><br><span class="line">      &#123; text: &#x27;微软Edge浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;360浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;苹果Safari 浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;火狐浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;谷歌Chrome浏览器&#x27;, max: 400 &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  series: (function () &#123;</span><br><span class="line">    var series = [];</span><br><span class="line">    for (var i = 1; i &lt;= 28; i++) &#123;</span><br><span class="line">      series.push(&#123;</span><br><span class="line">        type: &#x27;radar&#x27;,</span><br><span class="line">        symbol: &#x27;none&#x27;,</span><br><span class="line">        lineStyle: &#123;</span><br><span class="line">          width: 1</span><br><span class="line">        &#125;,</span><br><span class="line">        emphasis: &#123;</span><br><span class="line">          areaStyle: &#123;</span><br><span class="line">            color: &#x27;rgba(0,250,0,0.3)&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        data: [</span><br><span class="line">          &#123;</span><br><span class="line">            value: [</span><br><span class="line">              (40 - i) * 10,</span><br><span class="line">              (38 - i) * 4 + 60,</span><br><span class="line">              i * 5 + 10,</span><br><span class="line">              i * 9,</span><br><span class="line">              (i * i) / 2</span><br><span class="line">            ],</span><br><span class="line">            name: i + 2000 + &#x27;&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    return series;</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;;</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h3 id="几种常用的ECharts图表"><a href="#几种常用的ECharts图表" class="headerlink" title="几种常用的ECharts图表"></a>几种常用的ECharts图表</h3><h4 id="折线图-line"><a href="#折线图-line" class="headerlink" title="折线图 line"></a>折线图 line</h4><div id="echarts9675" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h3 id="几种常用的ECharts图表"><a href="#几种常用的ECharts图表" class="headerlink" title="几种常用的ECharts图表"></a>几种常用的ECharts图表</h3><h4 id="折线图-line"><a href="#折线图-line" class="headerlink" title="折线图 line"></a>折线图 line</h4><div id="echarts8296" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts9675'));
+        var myChart = echarts.init(document.getElementById('echarts8296'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -206,11 +206,11 @@
 </script>
 
 <hr>
-<h4 id="柱状图-bar"><a href="#柱状图-bar" class="headerlink" title="柱状图 bar"></a>柱状图 bar</h4><div id="echarts601" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="柱状图-bar"><a href="#柱状图-bar" class="headerlink" title="柱状图 bar"></a>柱状图 bar</h4><div id="echarts3390" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts601'));
+        var myChart = echarts.init(document.getElementById('echarts3390'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -234,11 +234,11 @@
 </script>
 
 <hr>
-<h4 id="饼图-pie"><a href="#饼图-pie" class="headerlink" title="饼图 pie"></a>饼图 pie</h4><div id="echarts4217" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="饼图-pie"><a href="#饼图-pie" class="headerlink" title="饼图 pie"></a>饼图 pie</h4><div id="echarts9252" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts4217'));
+        var myChart = echarts.init(document.getElementById('echarts9252'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -282,11 +282,11 @@
 </script>
 
 <hr>
-<h4 id="散点图-scatter"><a href="#散点图-scatter" class="headerlink" title="散点图 scatter"></a>散点图 scatter</h4><div id="echarts4409" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="散点图-scatter"><a href="#散点图-scatter" class="headerlink" title="散点图 scatter"></a>散点图 scatter</h4><div id="echarts4117" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts4409'));
+        var myChart = echarts.init(document.getElementById('echarts4117'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -566,11 +566,11 @@
 </script>
 
 <hr>
-<h4 id="K-线图-candlestick"><a href="#K-线图-candlestick" class="headerlink" title="K 线图 candlestick"></a>K 线图 candlestick</h4><div id="echarts2186" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="K-线图-candlestick"><a href="#K-线图-candlestick" class="headerlink" title="K 线图 candlestick"></a>K 线图 candlestick</h4><div id="echarts5853" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts2186'));
+        var myChart = echarts.init(document.getElementById('echarts5853'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -596,11 +596,11 @@
 </script>
 
 <hr>
-<h3 id="雷达图-radar"><a href="#雷达图-radar" class="headerlink" title="雷达图 radar"></a>雷达图 radar</h3><div id="echarts1094" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h3 id="雷达图-radar"><a href="#雷达图-radar" class="headerlink" title="雷达图 radar"></a>雷达图 radar</h3><div id="echarts8804" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts1094'));
+        var myChart = echarts.init(document.getElementById('echarts8804'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -647,11 +647,11 @@
 <h3 id="盒须图-boxplot"><a href="#盒须图-boxplot" class="headerlink" title="盒须图 boxplot"></a>盒须图 boxplot</h3><blockquote>
 <p>1、基础盒须图</p>
 </blockquote>
-<div id="echarts908" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<div id="echarts1198" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts908'));
+        var myChart = echarts.init(document.getElementById('echarts1198'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -743,11 +743,11 @@
 </script>
 
 <hr>
-<h4 id="关系图-graph"><a href="#关系图-graph" class="headerlink" title="关系图 graph"></a>关系图 graph</h4><div id="echarts1141" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="关系图-graph"><a href="#关系图-graph" class="headerlink" title="关系图 graph"></a>关系图 graph</h4><div id="echarts1290" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts1141'));
+        var myChart = echarts.init(document.getElementById('echarts1290'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -848,11 +848,11 @@
 </script>
 
 <hr>
-<h4 id="树图-tree"><a href="#树图-tree" class="headerlink" title="树图 tree"></a>树图 tree</h4><div id="echarts127" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="树图-tree"><a href="#树图-tree" class="headerlink" title="树图 tree"></a>树图 tree</h4><div id="echarts8410" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts127'));
+        var myChart = echarts.init(document.getElementById('echarts8410'));
 
         // 指定图表的配置项和数据
         var option = myChart.showLoading();
@@ -1091,11 +1091,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="旭日图-sunburst"><a href="#旭日图-sunburst" class="headerlink" title="旭日图 sunburst"></a>旭日图 sunburst</h4><div id="echarts7889" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="旭日图-sunburst"><a href="#旭日图-sunburst" class="headerlink" title="旭日图 sunburst"></a>旭日图 sunburst</h4><div id="echarts7776" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts7889'));
+        var myChart = echarts.init(document.getElementById('echarts7776'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -1223,11 +1223,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="平行坐标系-parallel"><a href="#平行坐标系-parallel" class="headerlink" title="平行坐标系 parallel"></a>平行坐标系 parallel</h4><div id="echarts5486" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="平行坐标系-parallel"><a href="#平行坐标系-parallel" class="headerlink" title="平行坐标系 parallel"></a>平行坐标系 parallel</h4><div id="echarts611" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts5486'));
+        var myChart = echarts.init(document.getElementById('echarts611'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -1260,11 +1260,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="桑基图-sankey"><a href="#桑基图-sankey" class="headerlink" title="桑基图 sankey"></a>桑基图 sankey</h4><div id="echarts8613" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="桑基图-sankey"><a href="#桑基图-sankey" class="headerlink" title="桑基图 sankey"></a>桑基图 sankey</h4><div id="echarts8801" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts8613'));
+        var myChart = echarts.init(document.getElementById('echarts8801'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2547,11 +2547,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="漏斗图-funnel"><a href="#漏斗图-funnel" class="headerlink" title="漏斗图 funnel"></a>漏斗图 funnel</h4><div id="echarts4012" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="漏斗图-funnel"><a href="#漏斗图-funnel" class="headerlink" title="漏斗图 funnel"></a>漏斗图 funnel</h4><div id="echarts23" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts4012'));
+        var myChart = echarts.init(document.getElementById('echarts23'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2622,11 +2622,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="仪表盘-gauge"><a href="#仪表盘-gauge" class="headerlink" title="仪表盘 gauge"></a>仪表盘 gauge</h4><div id="echarts6894" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="仪表盘-gauge"><a href="#仪表盘-gauge" class="headerlink" title="仪表盘 gauge"></a>仪表盘 gauge</h4><div id="echarts9459" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts6894'));
+        var myChart = echarts.init(document.getElementById('echarts9459'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2687,11 +2687,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="主题河流图-themeRiver"><a href="#主题河流图-themeRiver" class="headerlink" title="主题河流图 themeRiver"></a>主题河流图 themeRiver</h4><div id="echarts251" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="主题河流图-themeRiver"><a href="#主题河流图-themeRiver" class="headerlink" title="主题河流图 themeRiver"></a>主题河流图 themeRiver</h4><div id="echarts461" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts251'));
+        var myChart = echarts.init(document.getElementById('echarts461'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2906,216 +2906,6 @@ myChart.setOption(
         <tag>往事拾遗</tag>
         <tag>民风民俗</tag>
         <tag>道林老街</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客NexT主题中嵌入Mermaid图表</title>
-    <url>/posts/b16eaf40.html</url>
-    <content><![CDATA[<p>Mermaid是一种基于文本的格式生成图表和流程图的工具，是Markdown文本很好的补充。可以生成各种图表，其中包括流程图、时序图、甘特图等等。<span id="more"></span></p>
-<h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><p>1、 下载插件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-filter-mermaid-diagrams --save</span><br></pre></td></tr></table></figure>
-
-<p>2、启用mermaid功能<br>&ensp;&ensp;&ensp;&ensp;在blog&#x2F;_config.next.yml文件中找到mermaid，然后将下面的false改成true</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Mermaid tag</span><br><span class="line">mermaid:</span><br><span class="line">  enable: true</span><br><span class="line">  # Available themes: default | dark | forest | neutral</span><br><span class="line">  theme:</span><br><span class="line">    light: default</span><br><span class="line">    dark: dark</span><br></pre></td></tr></table></figure>
-
-<p>3、在文章中插入Mermaid语法即可。</p>
-<blockquote>
-<p>流程图 (Flowcharts)</p>
-</blockquote>
-<p>&ensp;&ensp;&ensp;&ensp;流程图是表示算法、工作流或过程步骤的优选方式。在Mermaid中，创建流程图就像编写Markdown一样简单：</p>
-<ul>
-<li>文本：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">    A[开始] --&gt; B&#123;决策点&#125;;</span><br><span class="line">    B -- 是 --&gt; C[执行任务];</span><br><span class="line">    B -- 否 --&gt; D[结束];</span><br><span class="line">    C --&gt; D;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图表：</li>
-</ul>
-<pre class="mermaid">graph TD;
-    A[开始] --> B{决策点};
-    B -- 是 --> C[执行任务];
-    B -- 否 --> D[结束];
-    C --> D;</pre>
-
-<hr>
-<blockquote>
-<p>序列图 (Sequence Diagrams)</p>
-</blockquote>
-<p>&ensp;&ensp;&ensp;&ensp;序列图用于展示对象之间的交互，包括消息的发送和接收。它在系统设计和API文档中非常有用：</p>
-<ul>
-<li>文本：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">    participant Alice as A</span><br><span class="line">    participant Bob as B</span><br><span class="line">    A-&gt;&gt;B: 天王盖地虎</span><br><span class="line">    B--&gt;&gt;A: 宝塔镇河妖</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图表：</li>
-</ul>
-<pre class="mermaid">sequenceDiagram
-    participant Alice as A
-    participant Bob as B
-    A->>B: 天王盖地虎
-    B-->>A: 宝塔镇河妖</pre>
-
-<hr>
-<blockquote>
-<p>甘特图 (Gantt Charts)</p>
-</blockquote>
-<p>&ensp;&ensp;&ensp;&ensp;甘特图是项目管理中不可或缺的工具，它帮助项目管理者展示任务和时间线：</p>
-<ul>
-<li>文本：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gantt</span><br><span class="line">    title 项目开发时间线</span><br><span class="line">    dateFormat  YYYY-MM-DD</span><br><span class="line">    section 设计</span><br><span class="line">    设计阶段 :done,    des1, 2023-01-06,2023-01-08</span><br><span class="line">    section 开发</span><br><span class="line">    开发阶段 :active,  dev1, after des1, 5d</span><br><span class="line">    section 测试</span><br><span class="line">    测试阶段 :         test1, after dev1, 3d</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图表：</li>
-</ul>
-<pre class="mermaid">gantt
-    title 项目开发时间线
-    dateFormat  YYYY-MM-DD
-    section 设计
-    设计阶段 :done,    des1, 2023-01-06,2023-01-08
-    section 开发
-    开发阶段 :active,  dev1, after des1, 5d
-    section 测试
-    测试阶段 :         test1, after dev1, 3d</pre>
-
-<hr>
-<blockquote>
-<p>类图 (Class Diagrams)</p>
-</blockquote>
-<p>&ensp;&ensp;&ensp;&ensp;类图在面向对象编程中用于展示类之间的关系，它帮助开发者理解系统的结构：</p>
-<ul>
-<li>文本：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class Animal &#123;</span><br><span class="line">        - name : string</span><br><span class="line">        + speak() : string</span><br><span class="line">    &#125;</span><br><span class="line">    class Dog &#123;</span><br><span class="line">        - breed : string</span><br><span class="line">        + speak() : string</span><br><span class="line">    &#125;</span><br><span class="line">    Animal &lt;|-- Dog</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图表：</li>
-</ul>
-<pre class="mermaid">classDiagram
-    class Animal {
-        - name : string
-        + speak() : string
-    }
-    class Dog {
-        - breed : string
-        + speak() : string
-    }
-    Animal <|-- Dog</pre>
-
-<hr>
-<blockquote>
-<p>状态图 (State Diagrams)</p>
-</blockquote>
-<p>&ensp;&ensp;&ensp;&ensp;状态图展示了对象的状态以及状态之间的转换，它在表示系统状态转换时非常有用：</p>
-<ul>
-<li>文本：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stateDiagram-v2</span><br><span class="line">    [*] --&gt; Still</span><br><span class="line">    Still --&gt; [*]</span><br><span class="line">    Still --&gt; Moving</span><br><span class="line">    Moving --&gt; Still</span><br><span class="line">    Moving --&gt; Crash</span><br><span class="line">    Crash --&gt; [*]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图表：</li>
-</ul>
-<pre class="mermaid">stateDiagram-v2
-    [*] --> Still
-    Still --> [*]
-    Still --> Moving
-    Moving --> Still
-    Moving --> Crash
-    Crash --> [*]</pre>
-
-<hr>
-<blockquote>
-<p>实体关系图 (Entity-Relationship Diagrams)</p>
-</blockquote>
-<p>&ensp;&ensp;&ensp;&ensp;实体关系图用于数据建模，展示实体之间的关系，是数据库设计的基础：</p>
-<ul>
-<li>文本：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">erDiagram</span><br><span class="line">    CUSTOMER ||--o&#123; ORDER : places</span><br><span class="line">    ORDER ||--|&#123; LINE-ITEM : contains</span><br><span class="line">    CUSTOMER &#125;|--|| PRODUCT : orders</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图表：</li>
-</ul>
-<pre class="mermaid">erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    ORDER ||--|{ LINE-ITEM : contains
-    CUSTOMER }|--|| PRODUCT : orders</pre>
-
-<hr>
-<blockquote>
-<p>用户旅程图 (User Journey Diagrams)</p>
-</blockquote>
-<p>&ensp;&ensp;&ensp;&ensp;用户旅程图展示了用户与系统的交互流程，它在用户体验设计和产品管理中扮演着重要角色：</p>
-<ul>
-<li>文本：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">journey</span><br><span class="line">    title 用户旅程图</span><br><span class="line">    section 用户注册</span><br><span class="line">    注册页面: 显示注册表单</span><br><span class="line">    用户填写: 输入信息</span><br><span class="line">    提交: 提交表单</span><br><span class="line">    section 用户登录</span><br><span class="line">    登录页面: 显示登录表单</span><br><span class="line">    用户验证: 验证信息</span><br><span class="line">    进入系统: 进入主界面</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图表：</li>
-</ul>
-<pre class="mermaid">journey
-    title 用户旅程图
-    section 用户注册
-    注册页面: 显示注册表单
-    用户填写: 输入信息
-    提交: 提交表单
-    section 用户登录
-    登录页面: 显示登录表单
-    用户验证: 验证信息
-    进入系统: 进入主界面</pre>
-
-<hr>
-<blockquote>
-<p>思维导图 (Mind Maps)</p>
-</blockquote>
-<p>&ensp;&ensp;&ensp;&ensp;思维导图用于展示思维过程和概念的关联，它是头脑风暴和创意发想的得力助手：</p>
-<ul>
-<li>文本：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">    A[思维导图] --&gt; B[中心思想]</span><br><span class="line">    B --&gt; C[分支1]</span><br><span class="line">    B --&gt; D[分支2]</span><br><span class="line">    C --&gt; E[子分支1]</span><br><span class="line">    C --&gt; F[子分支2]</span><br><span class="line">    D --&gt; G[子分支3]</span><br><span class="line">    D --&gt; H[子分支4]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图表：</li>
-</ul>
-<pre class="mermaid">graph LR
-    A[思维导图] --> B[中心思想]
-    B --> C[分支1]
-    B --> D[分支2]
-    C --> E[子分支1]
-    C --> F[子分支2]
-    D --> G[子分支3]
-    D --> H[子分支4]</pre>
-
-<hr>
-<blockquote>
-<p>饼图 (Pie Charts)</p>
-</blockquote>
-<p>&ensp;&ensp;&ensp;&ensp;饼图用于展示数据的百分比分布，它在市场分析和用户调研中非常有用：</p>
-<ul>
-<li>文本：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pie</span><br><span class="line">  title Key elements in Product X</span><br><span class="line">  &quot;水果&quot; : 25</span><br><span class="line">  &quot;蔬菜&quot; : 25</span><br><span class="line">  &quot;肉类&quot; : 20</span><br><span class="line">  &quot;乳制品&quot; : 15</span><br><span class="line">  &quot;其他&quot; :  15</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图表：</li>
-</ul>
-<pre class="mermaid">pie
-  title Key elements in Product X
-  "水果" : 25
-  "蔬菜" : 25
-  "肉类" : 20
-  "乳制品" : 15
-  "其他" :  15</pre>]]></content>
-      <categories>
-        <category>Hexo博客</category>
-        <category>NexT主题</category>
-      </categories>
-      <tags>
-        <tag>博客搭建</tag>
-        <tag>主题配置</tag>
-        <tag>经验技巧</tag>
       </tags>
   </entry>
   <entry>
