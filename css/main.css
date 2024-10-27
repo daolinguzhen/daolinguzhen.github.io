@@ -1340,7 +1340,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #ff417f;
+    background: #ffaac6;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2993,12 +2993,12 @@ p {
 }
 /* 图标颜色及大小 */
 .fa {
-  font-size: 14px;
+  font-size: 20px;
 }
 /* 菜单栏 */
 .fa-house-user {
   color: #e74c3c;
-  font-size: 15px;
+  font-size: 20px;
 }
 .fa-archive {
   color: #1abc9c;
@@ -3027,7 +3027,7 @@ p {
 .fa-map {
   color: #00f;
 }
-.fa-compass {
+.fa-calculator {
   color: #dfa710;
 }
 .fa-bookmark {
