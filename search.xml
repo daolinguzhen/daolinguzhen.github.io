@@ -14,11 +14,11 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% echarts 400 &#x27;85%&#x27; %&#125;</span><br><span class="line">这中间放ECharts代码</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
 
 <p>&ensp;&ensp;&ensp;&ensp;代码内容可自己编写，也可以去<a href="https://echarts.apache.org/examples/zh/index.html">ECharts官网</a>复制，然后粘贴到这里。以下是“雷达图浏览器占比变化”示例操作<sub>（其它图表操作一样）</sub>：</p>
-<div id="echarts3093" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<div id="echarts250" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts3093'));
+        var myChart = echarts.init(document.getElementById('echarts250'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -97,11 +97,11 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo博客NexT主题使用ECharts功能</span><br><span class="line">date: 2024-10-24 15:51:06</span><br><span class="line">categories:</span><br><span class="line">  - Hexo博客</span><br><span class="line">  - NexT主题</span><br><span class="line">tags:</span><br><span class="line">  - 博客搭建</span><br><span class="line">  - 主题配置</span><br><span class="line">  - 经验技巧</span><br><span class="line">---</span><br><span class="line">&#123;% echarts 400 &#x27;85%&#x27; %&#125;</span><br><span class="line">option = &#123;</span><br><span class="line">  title: &#123;</span><br><span class="line">    text: &#x27;浏览器比例&#x27;,</span><br><span class="line">    subtext: &#x27;假数据&#x27;,</span><br><span class="line">    top: 10,</span><br><span class="line">    left: 10</span><br><span class="line">  &#125;,</span><br><span class="line">  tooltip: &#123;</span><br><span class="line">    trigger: &#x27;item&#x27;</span><br><span class="line">  &#125;,</span><br><span class="line">  legend: &#123;</span><br><span class="line">    type: &#x27;scroll&#x27;,</span><br><span class="line">    bottom: 10,</span><br><span class="line">    data: (function () &#123;</span><br><span class="line">      var list = [];</span><br><span class="line">      for (var i = 1; i &lt;= 28; i++) &#123;</span><br><span class="line">        list.push(i + 2000 + &#x27;&#x27;);</span><br><span class="line">      &#125;</span><br><span class="line">      return list;</span><br><span class="line">    &#125;)()</span><br><span class="line">  &#125;,</span><br><span class="line">  visualMap: &#123;</span><br><span class="line">    top: &#x27;middle&#x27;,</span><br><span class="line">    right: 10,</span><br><span class="line">    color: [&#x27;red&#x27;, &#x27;yellow&#x27;],</span><br><span class="line">    calculable: true</span><br><span class="line">  &#125;,</span><br><span class="line">  radar: &#123;</span><br><span class="line">    indicator: [</span><br><span class="line">      &#123; text: &#x27;微软Edge浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;360浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;苹果Safari 浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;火狐浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;谷歌Chrome浏览器&#x27;, max: 400 &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  series: (function () &#123;</span><br><span class="line">    var series = [];</span><br><span class="line">    for (var i = 1; i &lt;= 28; i++) &#123;</span><br><span class="line">      series.push(&#123;</span><br><span class="line">        type: &#x27;radar&#x27;,</span><br><span class="line">        symbol: &#x27;none&#x27;,</span><br><span class="line">        lineStyle: &#123;</span><br><span class="line">          width: 1</span><br><span class="line">        &#125;,</span><br><span class="line">        emphasis: &#123;</span><br><span class="line">          areaStyle: &#123;</span><br><span class="line">            color: &#x27;rgba(0,250,0,0.3)&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        data: [</span><br><span class="line">          &#123;</span><br><span class="line">            value: [</span><br><span class="line">              (40 - i) * 10,</span><br><span class="line">              (38 - i) * 4 + 60,</span><br><span class="line">              i * 5 + 10,</span><br><span class="line">              i * 9,</span><br><span class="line">              (i * i) / 2</span><br><span class="line">            ],</span><br><span class="line">            name: i + 2000 + &#x27;&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    return series;</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;;</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h3 id="几种常用的ECharts图表"><a href="#几种常用的ECharts图表" class="headerlink" title="几种常用的ECharts图表"></a>几种常用的ECharts图表</h3><h4 id="折线图-line"><a href="#折线图-line" class="headerlink" title="折线图 line"></a>折线图 line</h4><div id="echarts8296" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h3 id="几种常用的ECharts图表"><a href="#几种常用的ECharts图表" class="headerlink" title="几种常用的ECharts图表"></a>几种常用的ECharts图表</h3><h4 id="折线图-line"><a href="#折线图-line" class="headerlink" title="折线图 line"></a>折线图 line</h4><div id="echarts4901" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts8296'));
+        var myChart = echarts.init(document.getElementById('echarts4901'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -206,11 +206,11 @@
 </script>
 
 <hr>
-<h4 id="柱状图-bar"><a href="#柱状图-bar" class="headerlink" title="柱状图 bar"></a>柱状图 bar</h4><div id="echarts3390" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="柱状图-bar"><a href="#柱状图-bar" class="headerlink" title="柱状图 bar"></a>柱状图 bar</h4><div id="echarts3376" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts3390'));
+        var myChart = echarts.init(document.getElementById('echarts3376'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -234,11 +234,11 @@
 </script>
 
 <hr>
-<h4 id="饼图-pie"><a href="#饼图-pie" class="headerlink" title="饼图 pie"></a>饼图 pie</h4><div id="echarts9252" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="饼图-pie"><a href="#饼图-pie" class="headerlink" title="饼图 pie"></a>饼图 pie</h4><div id="echarts7429" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts9252'));
+        var myChart = echarts.init(document.getElementById('echarts7429'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -282,11 +282,11 @@
 </script>
 
 <hr>
-<h4 id="散点图-scatter"><a href="#散点图-scatter" class="headerlink" title="散点图 scatter"></a>散点图 scatter</h4><div id="echarts4117" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="散点图-scatter"><a href="#散点图-scatter" class="headerlink" title="散点图 scatter"></a>散点图 scatter</h4><div id="echarts2813" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts4117'));
+        var myChart = echarts.init(document.getElementById('echarts2813'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -566,11 +566,11 @@
 </script>
 
 <hr>
-<h4 id="K-线图-candlestick"><a href="#K-线图-candlestick" class="headerlink" title="K 线图 candlestick"></a>K 线图 candlestick</h4><div id="echarts5853" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="K-线图-candlestick"><a href="#K-线图-candlestick" class="headerlink" title="K 线图 candlestick"></a>K 线图 candlestick</h4><div id="echarts1370" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts5853'));
+        var myChart = echarts.init(document.getElementById('echarts1370'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -596,11 +596,11 @@
 </script>
 
 <hr>
-<h3 id="雷达图-radar"><a href="#雷达图-radar" class="headerlink" title="雷达图 radar"></a>雷达图 radar</h3><div id="echarts8804" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h3 id="雷达图-radar"><a href="#雷达图-radar" class="headerlink" title="雷达图 radar"></a>雷达图 radar</h3><div id="echarts5184" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts8804'));
+        var myChart = echarts.init(document.getElementById('echarts5184'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -647,11 +647,11 @@
 <h3 id="盒须图-boxplot"><a href="#盒须图-boxplot" class="headerlink" title="盒须图 boxplot"></a>盒须图 boxplot</h3><blockquote>
 <p>1、基础盒须图</p>
 </blockquote>
-<div id="echarts1198" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<div id="echarts5660" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts1198'));
+        var myChart = echarts.init(document.getElementById('echarts5660'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -743,11 +743,11 @@
 </script>
 
 <hr>
-<h4 id="关系图-graph"><a href="#关系图-graph" class="headerlink" title="关系图 graph"></a>关系图 graph</h4><div id="echarts1290" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="关系图-graph"><a href="#关系图-graph" class="headerlink" title="关系图 graph"></a>关系图 graph</h4><div id="echarts910" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts1290'));
+        var myChart = echarts.init(document.getElementById('echarts910'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -848,11 +848,11 @@
 </script>
 
 <hr>
-<h4 id="树图-tree"><a href="#树图-tree" class="headerlink" title="树图 tree"></a>树图 tree</h4><div id="echarts8410" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="树图-tree"><a href="#树图-tree" class="headerlink" title="树图 tree"></a>树图 tree</h4><div id="echarts2018" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts8410'));
+        var myChart = echarts.init(document.getElementById('echarts2018'));
 
         // 指定图表的配置项和数据
         var option = myChart.showLoading();
@@ -1091,11 +1091,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="旭日图-sunburst"><a href="#旭日图-sunburst" class="headerlink" title="旭日图 sunburst"></a>旭日图 sunburst</h4><div id="echarts7776" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="旭日图-sunburst"><a href="#旭日图-sunburst" class="headerlink" title="旭日图 sunburst"></a>旭日图 sunburst</h4><div id="echarts3940" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts7776'));
+        var myChart = echarts.init(document.getElementById('echarts3940'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -1223,11 +1223,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="平行坐标系-parallel"><a href="#平行坐标系-parallel" class="headerlink" title="平行坐标系 parallel"></a>平行坐标系 parallel</h4><div id="echarts611" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="平行坐标系-parallel"><a href="#平行坐标系-parallel" class="headerlink" title="平行坐标系 parallel"></a>平行坐标系 parallel</h4><div id="echarts9322" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts611'));
+        var myChart = echarts.init(document.getElementById('echarts9322'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -1260,11 +1260,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="桑基图-sankey"><a href="#桑基图-sankey" class="headerlink" title="桑基图 sankey"></a>桑基图 sankey</h4><div id="echarts8801" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="桑基图-sankey"><a href="#桑基图-sankey" class="headerlink" title="桑基图 sankey"></a>桑基图 sankey</h4><div id="echarts4670" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts8801'));
+        var myChart = echarts.init(document.getElementById('echarts4670'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2547,11 +2547,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="漏斗图-funnel"><a href="#漏斗图-funnel" class="headerlink" title="漏斗图 funnel"></a>漏斗图 funnel</h4><div id="echarts23" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="漏斗图-funnel"><a href="#漏斗图-funnel" class="headerlink" title="漏斗图 funnel"></a>漏斗图 funnel</h4><div id="echarts3594" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts23'));
+        var myChart = echarts.init(document.getElementById('echarts3594'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2622,11 +2622,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="仪表盘-gauge"><a href="#仪表盘-gauge" class="headerlink" title="仪表盘 gauge"></a>仪表盘 gauge</h4><div id="echarts9459" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="仪表盘-gauge"><a href="#仪表盘-gauge" class="headerlink" title="仪表盘 gauge"></a>仪表盘 gauge</h4><div id="echarts9712" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts9459'));
+        var myChart = echarts.init(document.getElementById('echarts9712'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2687,11 +2687,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="主题河流图-themeRiver"><a href="#主题河流图-themeRiver" class="headerlink" title="主题河流图 themeRiver"></a>主题河流图 themeRiver</h4><div id="echarts461" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="主题河流图-themeRiver"><a href="#主题河流图-themeRiver" class="headerlink" title="主题河流图 themeRiver"></a>主题河流图 themeRiver</h4><div id="echarts2157" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts461'));
+        var myChart = echarts.init(document.getElementById('echarts2157'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2875,7 +2875,6 @@ myChart.setOption(
 </script>
 ]]></content>
       <categories>
-        <category>Hexo博客</category>
         <category>NexT主题</category>
       </categories>
       <tags>
