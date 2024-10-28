@@ -1,41 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo博客NexT主题在归档、分类、标签页面中引入CHarts统计图</title>
-    <url>/posts/641a9354.html</url>
-    <content><![CDATA[<p>本文教程主要针对Hexo博客NexT主题，对博客的文章发布时间、文章分类、文章标签绘制统计图，使用的是ECharts开源可视化库。<span id="more"></span></p>
-<h3 id="1-下载cheerio插件"><a href="#1-下载cheerio插件" class="headerlink" title="1.下载cheerio插件"></a>1.下载cheerio插件</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i cheerio --save</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、创建一个charts-js"><a href="#2、创建一个charts-js" class="headerlink" title="2、创建一个charts.js"></a>2、创建一个charts.js</h3><p>在blog&#x2F;themes&#x2F;next&#x2F;scripts&#x2F;helpers文件夹里创建一个charts.js文件，然后复制粘贴下面的代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const cheerio = require(&#x27;cheerio&#x27;)</span><br><span class="line">const moment = require(&#x27;moment&#x27;)</span><br><span class="line"></span><br><span class="line">hexo.extend.filter.register(&#x27;after_render:html&#x27;, function (locals) &#123;</span><br><span class="line">  const $ = cheerio.load(locals)</span><br><span class="line">  const post = $(&#x27;#posts-chart&#x27;)</span><br><span class="line">  const tag = $(&#x27;#tags-chart&#x27;)</span><br><span class="line">  const category = $(&#x27;#categories-chart&#x27;)</span><br><span class="line">  const htmlEncode = false</span><br><span class="line"></span><br><span class="line">  if (post.length &gt; 0 || tag.length &gt; 0 || category.length &gt; 0) &#123;</span><br><span class="line">    if (post.length &gt; 0 &amp;&amp; $(&#x27;#postsChart&#x27;).length === 0) &#123;</span><br><span class="line">      if (post.attr(&#x27;data-encode&#x27;) === &#x27;true&#x27;) htmlEncode = true</span><br><span class="line">      post.after(postsChart(post.attr(&#x27;data-start&#x27;)))</span><br><span class="line">    &#125;</span><br><span class="line">    if (tag.length &gt; 0 &amp;&amp; $(&#x27;#tagsChart&#x27;).length === 0) &#123;</span><br><span class="line">      if (tag.attr(&#x27;data-encode&#x27;) === &#x27;true&#x27;) htmlEncode = true</span><br><span class="line">      tag.after(tagsChart(tag.attr(&#x27;data-length&#x27;)))</span><br><span class="line">    &#125;</span><br><span class="line">    if (category.length &gt; 0 &amp;&amp; $(&#x27;#categoriesChart&#x27;).length === 0) &#123;</span><br><span class="line">      if (category.attr(&#x27;data-encode&#x27;) === &#x27;true&#x27;) htmlEncode = true</span><br><span class="line">      category.after(categoriesChart(category.attr(&#x27;data-parent&#x27;)))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (htmlEncode) &#123;</span><br><span class="line">      return $.root().html().replace(/&amp;amp;#/g, &#x27;&amp;#&#x27;)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return $.root().html()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return locals</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, 15)</span><br><span class="line"></span><br><span class="line">function postsChart (startMonth) &#123;</span><br><span class="line">  const startDate = moment(startMonth || &#x27;2020-01&#x27;)</span><br><span class="line">  const endDate = moment()</span><br><span class="line"></span><br><span class="line">  const monthMap = new Map()</span><br><span class="line">  const dayTime = 3600 * 24 * 1000</span><br><span class="line">  for (let time = startDate; time &lt;= endDate; time += dayTime) &#123;</span><br><span class="line">    const month = moment(time).format(&#x27;YYYY-MM&#x27;)</span><br><span class="line">    if (!monthMap.has(month)) &#123;</span><br><span class="line">      monthMap.set(month, 0)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  hexo.locals.get(&#x27;posts&#x27;).forEach(function (post) &#123;</span><br><span class="line">    const month = post.date.format(&#x27;YYYY-MM&#x27;)</span><br><span class="line">    if (monthMap.has(month)) &#123;</span><br><span class="line">      monthMap.set(month, monthMap.get(month) + 1)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  const monthArr = JSON.stringify([...monthMap.keys()])</span><br><span class="line">  const monthValueArr = JSON.stringify([...monthMap.values()])</span><br><span class="line"></span><br><span class="line">  return `</span><br><span class="line">  &lt;script id=&quot;postsChart&quot;&gt;</span><br><span class="line">    var color = document.documentElement.getAttribute(&#x27;data-theme&#x27;) === &#x27;light&#x27; ? &#x27;#4c4948&#x27; : &#x27;rgba(255,255,255,0.7)&#x27;</span><br><span class="line">    var postsChart = echarts.init(document.getElementById(&#x27;posts-chart&#x27;), &#x27;light&#x27;);</span><br><span class="line">    var postsOption = &#123;</span><br><span class="line">      title: &#123;</span><br><span class="line">        text: &#x27;文章发布统计图&#x27;,</span><br><span class="line">        x: &#x27;center&#x27;,</span><br><span class="line">        textStyle: &#123;</span><br><span class="line">          color: color</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      tooltip: &#123;</span><br><span class="line">        trigger: &#x27;axis&#x27;</span><br><span class="line">      &#125;,</span><br><span class="line">      xAxis: &#123;</span><br><span class="line">        name: &#x27;日期&#x27;,</span><br><span class="line">        type: &#x27;category&#x27;,</span><br><span class="line">        boundaryGap: false,</span><br><span class="line">        nameTextStyle: &#123;</span><br><span class="line">          color: color</span><br><span class="line">        &#125;,</span><br><span class="line">        axisTick: &#123;</span><br><span class="line">          show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLabel: &#123;</span><br><span class="line">          show: true,</span><br><span class="line">          color: color</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLine: &#123;</span><br><span class="line">          show: true,</span><br><span class="line">          lineStyle: &#123;</span><br><span class="line">            color: color</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        data: $&#123;monthArr&#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      yAxis: &#123;</span><br><span class="line">        name: &#x27;文章篇数&#x27;,</span><br><span class="line">        type: &#x27;value&#x27;,</span><br><span class="line">        nameTextStyle: &#123;</span><br><span class="line">          color: color</span><br><span class="line">        &#125;,</span><br><span class="line">        splitLine: &#123;</span><br><span class="line">          show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        axisTick: &#123;</span><br><span class="line">          show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLabel: &#123;</span><br><span class="line">          show: true,</span><br><span class="line">          color: color</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLine: &#123;</span><br><span class="line">          show: true,</span><br><span class="line">          lineStyle: &#123;</span><br><span class="line">            color: color</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      series: [&#123;</span><br><span class="line">        name: &#x27;文章篇数&#x27;,</span><br><span class="line">        type: &#x27;line&#x27;,</span><br><span class="line">        smooth: true,</span><br><span class="line">        lineStyle: &#123;</span><br><span class="line">            width: 0</span><br><span class="line">        &#125;,</span><br><span class="line">        showSymbol: false,</span><br><span class="line">        itemStyle: &#123;</span><br><span class="line">          opacity: 1,</span><br><span class="line">          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [&#123;</span><br><span class="line">            offset: 0,</span><br><span class="line">            color: &#x27;rgba(128, 255, 165)&#x27;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            offset: 1,</span><br><span class="line">            color: &#x27;rgba(1, 191, 236)&#x27;</span><br><span class="line">          &#125;])</span><br><span class="line">        &#125;,</span><br><span class="line">        areaStyle: &#123;</span><br><span class="line">          opacity: 1,</span><br><span class="line">          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [&#123;</span><br><span class="line">            offset: 0,</span><br><span class="line">            color: &#x27;rgba(128, 255, 165)&#x27;</span><br><span class="line">          &#125;, &#123;</span><br><span class="line">            offset: 1,</span><br><span class="line">            color: &#x27;rgba(1, 191, 236)&#x27;</span><br><span class="line">          &#125;])</span><br><span class="line">        &#125;,</span><br><span class="line">        data: $&#123;monthValueArr&#125;,</span><br><span class="line">        markLine: &#123;</span><br><span class="line">          data: [&#123;</span><br><span class="line">            name: &#x27;平均值&#x27;,</span><br><span class="line">            type: &#x27;average&#x27;,</span><br><span class="line">            label: &#123;</span><br><span class="line">              color: color</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;;</span><br><span class="line">    postsChart.setOption(postsOption);</span><br><span class="line">    window.addEventListener(&#x27;resize&#x27;, () =&gt; &#123; </span><br><span class="line">      postsChart.resize();</span><br><span class="line">    &#125;);</span><br><span class="line">    postsChart.on(&#x27;click&#x27;, &#x27;series&#x27;, (event) =&gt; &#123;</span><br><span class="line">      if (event.componentType === &#x27;series&#x27;) window.location.href = &#x27;/archives/&#x27; + event.name.replace(&#x27;-&#x27;, &#x27;/&#x27;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &lt;/script&gt;`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function tagsChart (len) &#123;</span><br><span class="line">  const tagArr = []</span><br><span class="line">  hexo.locals.get(&#x27;tags&#x27;).map(function (tag) &#123;</span><br><span class="line">    tagArr.push(&#123; name: tag.name, value: tag.length, path: tag.path &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  tagArr.sort((a, b) =&gt; &#123; return b.value - a.value &#125;)</span><br><span class="line"></span><br><span class="line">  const dataLength = Math.min(tagArr.length, len) || tagArr.length</span><br><span class="line">  const tagNameArr = []</span><br><span class="line">  for (let i = 0; i &lt; dataLength; i++) &#123;</span><br><span class="line">    tagNameArr.push(tagArr[i].name)</span><br><span class="line">  &#125;</span><br><span class="line">  const tagNameArrJson = JSON.stringify(tagNameArr)</span><br><span class="line">  const tagArrJson = JSON.stringify(tagArr)</span><br><span class="line"></span><br><span class="line">  return `</span><br><span class="line">  &lt;script id=&quot;tagsChart&quot;&gt;</span><br><span class="line">    var color = document.documentElement.getAttribute(&#x27;data-theme&#x27;) === &#x27;light&#x27; ? &#x27;#4c4948&#x27; : &#x27;rgba(255,255,255,0.7)&#x27;</span><br><span class="line">    var tagsChart = echarts.init(document.getElementById(&#x27;tags-chart&#x27;), &#x27;light&#x27;);</span><br><span class="line">    var tagsOption = &#123;</span><br><span class="line">      title: &#123;</span><br><span class="line">        text: &#x27;Top $&#123;dataLength&#125; 标签统计图&#x27;,</span><br><span class="line">        x: &#x27;center&#x27;,</span><br><span class="line">        textStyle: &#123;</span><br><span class="line">          color: color</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      tooltip: &#123;&#125;,</span><br><span class="line">      xAxis: &#123;</span><br><span class="line">        name: &#x27;标签&#x27;,</span><br><span class="line">        type: &#x27;category&#x27;,</span><br><span class="line">        nameTextStyle: &#123;</span><br><span class="line">          color: color</span><br><span class="line">        &#125;,</span><br><span class="line">        axisTick: &#123;</span><br><span class="line">          show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLabel: &#123;</span><br><span class="line">          show: true,</span><br><span class="line">          color: color,</span><br><span class="line">          interval: 0</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLine: &#123;</span><br><span class="line">          show: true,</span><br><span class="line">          lineStyle: &#123;</span><br><span class="line">            color: color</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        data: $&#123;tagNameArrJson&#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      yAxis: &#123;</span><br><span class="line">        name: &#x27;文章篇数&#x27;,</span><br><span class="line">        type: &#x27;value&#x27;,</span><br><span class="line">        splitLine: &#123;</span><br><span class="line">          show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        nameTextStyle: &#123;</span><br><span class="line">          color: color</span><br><span class="line">        &#125;,</span><br><span class="line">        axisTick: &#123;</span><br><span class="line">          show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLabel: &#123;</span><br><span class="line">          show: true,</span><br><span class="line">          color: color</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLine: &#123;</span><br><span class="line">          show: true,</span><br><span class="line">          lineStyle: &#123;</span><br><span class="line">            color: color</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      series: [&#123;</span><br><span class="line">        name: &#x27;文章篇数&#x27;,</span><br><span class="line">        type: &#x27;bar&#x27;,</span><br><span class="line">        data: $&#123;tagArrJson&#125;,</span><br><span class="line">        itemStyle: &#123;</span><br><span class="line">          borderRadius: [5, 5, 0, 0],</span><br><span class="line">          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [&#123;</span><br><span class="line">            offset: 0,</span><br><span class="line">            color: &#x27;rgba(128, 255, 165)&#x27;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            offset: 1,</span><br><span class="line">            color: &#x27;rgba(1, 191, 236)&#x27;</span><br><span class="line">          &#125;])</span><br><span class="line">        &#125;,</span><br><span class="line">        emphasis: &#123;</span><br><span class="line">          itemStyle: &#123;</span><br><span class="line">            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [&#123;</span><br><span class="line">              offset: 0,</span><br><span class="line">              color: &#x27;rgba(128, 255, 195)&#x27;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              offset: 1,</span><br><span class="line">              color: &#x27;rgba(1, 211, 255)&#x27;</span><br><span class="line">            &#125;])</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        markLine: &#123;</span><br><span class="line">          data: [&#123;</span><br><span class="line">            name: &#x27;平均值&#x27;,</span><br><span class="line">            type: &#x27;average&#x27;,</span><br><span class="line">            label: &#123;</span><br><span class="line">              color: color</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;;</span><br><span class="line">    tagsChart.setOption(tagsOption);</span><br><span class="line">    window.addEventListener(&#x27;resize&#x27;, () =&gt; &#123; </span><br><span class="line">      tagsChart.resize();</span><br><span class="line">    &#125;);</span><br><span class="line">    tagsChart.on(&#x27;click&#x27;, &#x27;series&#x27;, (event) =&gt; &#123;</span><br><span class="line">      if(event.data.path) window.location.href = &#x27;/&#x27; + event.data.path;</span><br><span class="line">    &#125;);</span><br><span class="line">  &lt;/script&gt;`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function categoriesChart (dataParent) &#123;</span><br><span class="line">  const categoryArr = []</span><br><span class="line">  let categoryParentFlag = false</span><br><span class="line">  hexo.locals.get(&#x27;categories&#x27;).map(function (category) &#123;</span><br><span class="line">    if (category.parent) categoryParentFlag = true</span><br><span class="line">    categoryArr.push(&#123;</span><br><span class="line">      name: category.name,</span><br><span class="line">      value: category.length,</span><br><span class="line">      path: category.path,</span><br><span class="line">      id: category._id,</span><br><span class="line">      parentId: category.parent || &#x27;0&#x27;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  categoryParentFlag = categoryParentFlag &amp;&amp; dataParent === &#x27;true&#x27;</span><br><span class="line">  categoryArr.sort((a, b) =&gt; &#123; return b.value - a.value &#125;)</span><br><span class="line">  function translateListToTree (data, parent) &#123;</span><br><span class="line">    let tree = []</span><br><span class="line">    let temp</span><br><span class="line">    data.forEach((item, index) =&gt; &#123;</span><br><span class="line">      if (data[index].parentId == parent) &#123;</span><br><span class="line">        let obj = data[index];</span><br><span class="line">        temp = translateListToTree(data, data[index].id);</span><br><span class="line">        if (temp.length &gt; 0) &#123;</span><br><span class="line">          obj.children = temp</span><br><span class="line">        &#125;</span><br><span class="line">        if (tree.indexOf())</span><br><span class="line">          tree.push(obj)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    return tree</span><br><span class="line">  &#125;</span><br><span class="line">  const categoryNameJson = JSON.stringify(categoryArr.map(function (category) &#123; return category.name &#125;))</span><br><span class="line">  const categoryArrJson = JSON.stringify(categoryArr)</span><br><span class="line">  const categoryArrParentJson = JSON.stringify(translateListToTree(categoryArr, &#x27;0&#x27;))</span><br><span class="line"></span><br><span class="line">  return `</span><br><span class="line">  &lt;script id=&quot;categoriesChart&quot;&gt;</span><br><span class="line">    var color = document.documentElement.getAttribute(&#x27;data-theme&#x27;) === &#x27;light&#x27; ? &#x27;#4c4948&#x27; : &#x27;rgba(255,255,255,0.7)&#x27;</span><br><span class="line">    var categoriesChart = echarts.init(document.getElementById(&#x27;categories-chart&#x27;), &#x27;light&#x27;);</span><br><span class="line">    var categoryParentFlag = $&#123;categoryParentFlag&#125;</span><br><span class="line">    var categoriesOption = &#123;</span><br><span class="line">      title: &#123;</span><br><span class="line">        text: &#x27;文章分类统计图&#x27;,</span><br><span class="line">        x: &#x27;center&#x27;,</span><br><span class="line">        textStyle: &#123;</span><br><span class="line">          color: color</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      legend: &#123;</span><br><span class="line">        top: &#x27;bottom&#x27;,</span><br><span class="line">        data: $&#123;categoryNameJson&#125;,</span><br><span class="line">        textStyle: &#123;</span><br><span class="line">          color: color</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      tooltip: &#123;</span><br><span class="line">        trigger: &#x27;item&#x27;</span><br><span class="line">      &#125;,</span><br><span class="line">      series: []</span><br><span class="line">    &#125;;</span><br><span class="line">    categoriesOption.series.push(</span><br><span class="line">      categoryParentFlag ? </span><br><span class="line">      &#123;</span><br><span class="line">        nodeClick :false,</span><br><span class="line">        name: &#x27;文章篇数&#x27;,</span><br><span class="line">        type: &#x27;sunburst&#x27;,</span><br><span class="line">        radius: [&#x27;15%&#x27;, &#x27;90%&#x27;],</span><br><span class="line">        center: [&#x27;50%&#x27;, &#x27;55%&#x27;],</span><br><span class="line">        sort: &#x27;desc&#x27;,</span><br><span class="line">        data: $&#123;categoryArrParentJson&#125;,</span><br><span class="line">        itemStyle: &#123;</span><br><span class="line">          borderColor: &#x27;#fff&#x27;,</span><br><span class="line">          borderWidth: 2,</span><br><span class="line">          emphasis: &#123;</span><br><span class="line">            focus: &#x27;ancestor&#x27;,</span><br><span class="line">            shadowBlur: 10,</span><br><span class="line">            shadowOffsetX: 0,</span><br><span class="line">            shadowColor: &#x27;rgba(255, 255, 255, 0.5)&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      :</span><br><span class="line">      &#123;</span><br><span class="line">        name: &#x27;文章篇数&#x27;,</span><br><span class="line">        type: &#x27;pie&#x27;,</span><br><span class="line">        radius: [30, 80],</span><br><span class="line">        roseType: &#x27;area&#x27;,</span><br><span class="line">        label: &#123;</span><br><span class="line">          color: color,</span><br><span class="line">          formatter: &#x27;&#123;b&#125; : &#123;c&#125; (&#123;d&#125;%)&#x27;</span><br><span class="line">        &#125;,</span><br><span class="line">        data: $&#123;categoryArrJson&#125;,</span><br><span class="line">        itemStyle: &#123;</span><br><span class="line">          emphasis: &#123;</span><br><span class="line">            shadowBlur: 10,</span><br><span class="line">            shadowOffsetX: 0,</span><br><span class="line">            shadowColor: &#x27;rgba(255, 255, 255, 0.5)&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">    categoriesChart.setOption(categoriesOption);</span><br><span class="line">    window.addEventListener(&#x27;resize&#x27;, () =&gt; &#123; </span><br><span class="line">      categoriesChart.resize();</span><br><span class="line">    &#125;);</span><br><span class="line">    categoriesChart.on(&#x27;click&#x27;, &#x27;series&#x27;, (event) =&gt; &#123;</span><br><span class="line">      if(event.data.path) window.location.href = &#x27;/&#x27; + event.data.path;</span><br><span class="line">    &#125;);</span><br><span class="line">  &lt;/script&gt;`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、引入ECharts-js"><a href="#3、引入ECharts-js" class="headerlink" title="3、引入ECharts.js"></a>3、引入ECharts.js</h3><p>在blog&#x2F;themes&#x2F;next&#x2F;layout文件夹中找到_layout.njk文件，然后在<title>的下面引入js代码:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;title&gt;&#123;% block title %&#125;&#123;% endblock %&#125;&lt;/title&gt;(在此处下面引入js代码)</span><br><span class="line">&lt;script src=&quot;https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、添加统计图"><a href="#4、添加统计图" class="headerlink" title="4、添加统计图"></a>4、添加统计图</h3><blockquote>
-<p>归档页使用统计图<br>在blog&#x2F;themes&#x2F;next&#x2F;layout文件夹中找到archive.njk文件，然后在<span>的下面引入js代码:</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;span class=&quot;collection-header&quot;&gt;&#123;&#123; __(&#x27;cheers.&#x27; + cheers) &#125;&#125;! &#123;&#123; _p(&#x27;counter.archive_posts&#x27;, site.posts.length) &#125;&#125; &#123;&#123; __(&#x27;keep_on&#x27;) &#125;&#125;&lt;/span&gt;(在此处下面添加归档统计图代码)</span><br><span class="line">&lt;div id=&quot;posts-chart&quot; data-start=&quot;2024-01&quot; style=&quot;border-radius: 8px; height: 300px; padding: 10px;&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在分类页使用统计图<br>在blog&#x2F;themes&#x2F;next&#x2F;layout文件夹中找到page.njk文件，然后在page.type &#x3D;&#x3D;&#x3D; ‘categories’的下面添加分类统计图代码:</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% elif page.type === &#x27;categories&#x27; %&#125;（在此处下面添加分类统计图代码）</span><br><span class="line">&lt;div id=&quot;categories-chart&quot; data-parent=&quot;true&quot; style=&quot;height: 300px; padding: 10px;&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在标签页使用统计图<br>在blog&#x2F;themes&#x2F;next&#x2F;layout文件夹中找到page.njk文件，然后在page.type &#x3D;&#x3D;&#x3D; ‘tags’下面添加标签统计图代码:</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- if page.type === &#x27;tags&#x27; %&#125;（在此处下面添加标签统计图代码）</span><br><span class="line">&lt;div id=&quot;tags-chart&quot; data-length=&quot;10&quot; style=&quot;border-radius: 8px; height: 300px; padding: 10px;&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>NexT主题</category>
-      </categories>
-      <tags>
-        <tag>博客搭建</tag>
-        <tag>主题配置</tag>
-        <tag>经验技巧</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客NexT主题中添加ECharts动态图表</title>
     <url>/posts/f18e8f82.html</url>
     <content><![CDATA[<p>ECharts是一款基于JavaScript的数据可视化图表库，提供直观，生动，可交互，可个性化定制的数据可视化图表。NexT主题可以通过安装hexo-tag-echarts插件，实现对数据的可视化呈现。<span id="more"></span></p>
@@ -47,11 +12,11 @@
 <h3 id="3、文中插入Mermaid语法"><a href="#3、文中插入Mermaid语法" class="headerlink" title="3、文中插入Mermaid语法"></a>3、文中插入Mermaid语法</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% echarts 400 &#x27;85%&#x27; %&#125;</span><br><span class="line">此处放ECharts代码</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
 
 <p>&ensp;&ensp;&ensp;&ensp;代码内容可自己编写，也可以去<a href="https://echarts.apache.org/examples/zh/index.html">ECharts官网</a>复制，然后粘贴到这里。以下是“雷达图浏览器占比变化”示例操作<sub>（其它图表操作一样）</sub>：</p>
-<div id="echarts3527" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<div id="echarts818" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts3527'));
+        var myChart = echarts.init(document.getElementById('echarts818'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -130,11 +95,11 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo博客NexT主题中添加ECharts动态图表</span><br><span class="line">categories:</span><br><span class="line">  - NexT主题</span><br><span class="line">tags:</span><br><span class="line">  - 博客搭建</span><br><span class="line">  - 主题配置</span><br><span class="line">  - 经验技巧</span><br><span class="line">abbrlink: f18e8f82</span><br><span class="line">date: 2024-10-27 15:45:50</span><br><span class="line">top: true</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&#123;% echarts 400 &#x27;85%&#x27; %&#125;</span><br><span class="line">option = &#123;</span><br><span class="line">  title: &#123;</span><br><span class="line">    text: &#x27;浏览器比例&#x27;,</span><br><span class="line">    subtext: &#x27;假数据&#x27;,</span><br><span class="line">    top: 10,</span><br><span class="line">    left: 10</span><br><span class="line">  &#125;,</span><br><span class="line">  tooltip: &#123;</span><br><span class="line">    trigger: &#x27;item&#x27;</span><br><span class="line">  &#125;,</span><br><span class="line">  legend: &#123;</span><br><span class="line">    type: &#x27;scroll&#x27;,</span><br><span class="line">    bottom: 10,</span><br><span class="line">    data: (function () &#123;</span><br><span class="line">      var list = [];</span><br><span class="line">      for (var i = 1; i &lt;= 28; i++) &#123;</span><br><span class="line">        list.push(i + 2000 + &#x27;&#x27;);</span><br><span class="line">      &#125;</span><br><span class="line">      return list;</span><br><span class="line">    &#125;)()</span><br><span class="line">  &#125;,</span><br><span class="line">  visualMap: &#123;</span><br><span class="line">    top: &#x27;middle&#x27;,</span><br><span class="line">    right: 10,</span><br><span class="line">    color: [&#x27;red&#x27;, &#x27;yellow&#x27;],</span><br><span class="line">    calculable: true</span><br><span class="line">  &#125;,</span><br><span class="line">  radar: &#123;</span><br><span class="line">    indicator: [</span><br><span class="line">      &#123; text: &#x27;微软Edge浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;360浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;苹果Safari 浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;火狐浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;谷歌Chrome浏览器&#x27;, max: 400 &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  series: (function () &#123;</span><br><span class="line">    var series = [];</span><br><span class="line">    for (var i = 1; i &lt;= 28; i++) &#123;</span><br><span class="line">      series.push(&#123;</span><br><span class="line">        type: &#x27;radar&#x27;,</span><br><span class="line">        symbol: &#x27;none&#x27;,</span><br><span class="line">        lineStyle: &#123;</span><br><span class="line">          width: 1</span><br><span class="line">        &#125;,</span><br><span class="line">        emphasis: &#123;</span><br><span class="line">          areaStyle: &#123;</span><br><span class="line">            color: &#x27;rgba(0,250,0,0.3)&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        data: [</span><br><span class="line">          &#123;</span><br><span class="line">            value: [</span><br><span class="line">              (40 - i) * 10,</span><br><span class="line">              (38 - i) * 4 + 60,</span><br><span class="line">              i * 5 + 10,</span><br><span class="line">              i * 9,</span><br><span class="line">              (i * i) / 2</span><br><span class="line">            ],</span><br><span class="line">            name: i + 2000 + &#x27;&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    return series;</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;;</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h3 id="几种常用的ECharts图表"><a href="#几种常用的ECharts图表" class="headerlink" title="几种常用的ECharts图表"></a>几种常用的ECharts图表</h3><h4 id="折线图-line"><a href="#折线图-line" class="headerlink" title="折线图 line"></a>折线图 line</h4><div id="echarts9231" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h3 id="几种常用的ECharts图表"><a href="#几种常用的ECharts图表" class="headerlink" title="几种常用的ECharts图表"></a>几种常用的ECharts图表</h3><h4 id="折线图-line"><a href="#折线图-line" class="headerlink" title="折线图 line"></a>折线图 line</h4><div id="echarts4965" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts9231'));
+        var myChart = echarts.init(document.getElementById('echarts4965'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -239,11 +204,11 @@
 </script>
 
 <hr>
-<h4 id="柱状图-bar"><a href="#柱状图-bar" class="headerlink" title="柱状图 bar"></a>柱状图 bar</h4><div id="echarts7693" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="柱状图-bar"><a href="#柱状图-bar" class="headerlink" title="柱状图 bar"></a>柱状图 bar</h4><div id="echarts5137" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts7693'));
+        var myChart = echarts.init(document.getElementById('echarts5137'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -267,11 +232,11 @@
 </script>
 
 <hr>
-<h4 id="饼图-pie"><a href="#饼图-pie" class="headerlink" title="饼图 pie"></a>饼图 pie</h4><div id="echarts7195" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="饼图-pie"><a href="#饼图-pie" class="headerlink" title="饼图 pie"></a>饼图 pie</h4><div id="echarts9828" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts7195'));
+        var myChart = echarts.init(document.getElementById('echarts9828'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -315,11 +280,11 @@
 </script>
 
 <hr>
-<h4 id="散点图-scatter"><a href="#散点图-scatter" class="headerlink" title="散点图 scatter"></a>散点图 scatter</h4><div id="echarts1174" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="散点图-scatter"><a href="#散点图-scatter" class="headerlink" title="散点图 scatter"></a>散点图 scatter</h4><div id="echarts9829" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts1174'));
+        var myChart = echarts.init(document.getElementById('echarts9829'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -599,11 +564,11 @@
 </script>
 
 <hr>
-<h4 id="K-线图-candlestick"><a href="#K-线图-candlestick" class="headerlink" title="K 线图 candlestick"></a>K 线图 candlestick</h4><div id="echarts6016" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="K-线图-candlestick"><a href="#K-线图-candlestick" class="headerlink" title="K 线图 candlestick"></a>K 线图 candlestick</h4><div id="echarts9229" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts6016'));
+        var myChart = echarts.init(document.getElementById('echarts9229'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -629,11 +594,11 @@
 </script>
 
 <hr>
-<h3 id="雷达图-radar"><a href="#雷达图-radar" class="headerlink" title="雷达图 radar"></a>雷达图 radar</h3><div id="echarts7829" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h3 id="雷达图-radar"><a href="#雷达图-radar" class="headerlink" title="雷达图 radar"></a>雷达图 radar</h3><div id="echarts7173" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts7829'));
+        var myChart = echarts.init(document.getElementById('echarts7173'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -680,11 +645,11 @@
 <h3 id="盒须图-boxplot"><a href="#盒须图-boxplot" class="headerlink" title="盒须图 boxplot"></a>盒须图 boxplot</h3><blockquote>
 <p>1、基础盒须图</p>
 </blockquote>
-<div id="echarts9741" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<div id="echarts7057" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts9741'));
+        var myChart = echarts.init(document.getElementById('echarts7057'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -776,11 +741,11 @@
 </script>
 
 <hr>
-<h4 id="关系图-graph"><a href="#关系图-graph" class="headerlink" title="关系图 graph"></a>关系图 graph</h4><div id="echarts4713" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="关系图-graph"><a href="#关系图-graph" class="headerlink" title="关系图 graph"></a>关系图 graph</h4><div id="echarts9774" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts4713'));
+        var myChart = echarts.init(document.getElementById('echarts9774'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -881,11 +846,11 @@
 </script>
 
 <hr>
-<h4 id="树图-tree"><a href="#树图-tree" class="headerlink" title="树图 tree"></a>树图 tree</h4><div id="echarts6279" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="树图-tree"><a href="#树图-tree" class="headerlink" title="树图 tree"></a>树图 tree</h4><div id="echarts8119" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts6279'));
+        var myChart = echarts.init(document.getElementById('echarts8119'));
 
         // 指定图表的配置项和数据
         var option = myChart.showLoading();
@@ -1124,11 +1089,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="旭日图-sunburst"><a href="#旭日图-sunburst" class="headerlink" title="旭日图 sunburst"></a>旭日图 sunburst</h4><div id="echarts4191" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="旭日图-sunburst"><a href="#旭日图-sunburst" class="headerlink" title="旭日图 sunburst"></a>旭日图 sunburst</h4><div id="echarts9588" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts4191'));
+        var myChart = echarts.init(document.getElementById('echarts9588'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -1256,11 +1221,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="平行坐标系-parallel"><a href="#平行坐标系-parallel" class="headerlink" title="平行坐标系 parallel"></a>平行坐标系 parallel</h4><div id="echarts854" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="平行坐标系-parallel"><a href="#平行坐标系-parallel" class="headerlink" title="平行坐标系 parallel"></a>平行坐标系 parallel</h4><div id="echarts829" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts854'));
+        var myChart = echarts.init(document.getElementById('echarts829'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -1293,11 +1258,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="桑基图-sankey"><a href="#桑基图-sankey" class="headerlink" title="桑基图 sankey"></a>桑基图 sankey</h4><div id="echarts2694" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="桑基图-sankey"><a href="#桑基图-sankey" class="headerlink" title="桑基图 sankey"></a>桑基图 sankey</h4><div id="echarts7367" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts2694'));
+        var myChart = echarts.init(document.getElementById('echarts7367'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2580,11 +2545,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="漏斗图-funnel"><a href="#漏斗图-funnel" class="headerlink" title="漏斗图 funnel"></a>漏斗图 funnel</h4><div id="echarts8405" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="漏斗图-funnel"><a href="#漏斗图-funnel" class="headerlink" title="漏斗图 funnel"></a>漏斗图 funnel</h4><div id="echarts4177" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts8405'));
+        var myChart = echarts.init(document.getElementById('echarts4177'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2655,11 +2620,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="仪表盘-gauge"><a href="#仪表盘-gauge" class="headerlink" title="仪表盘 gauge"></a>仪表盘 gauge</h4><div id="echarts1753" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="仪表盘-gauge"><a href="#仪表盘-gauge" class="headerlink" title="仪表盘 gauge"></a>仪表盘 gauge</h4><div id="echarts4418" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts1753'));
+        var myChart = echarts.init(document.getElementById('echarts4418'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2720,11 +2685,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="主题河流图-themeRiver"><a href="#主题河流图-themeRiver" class="headerlink" title="主题河流图 themeRiver"></a>主题河流图 themeRiver</h4><div id="echarts8560" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="主题河流图-themeRiver"><a href="#主题河流图-themeRiver" class="headerlink" title="主题河流图 themeRiver"></a>主题河流图 themeRiver</h4><div id="echarts4160" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts8560'));
+        var myChart = echarts.init(document.getElementById('echarts4160'));
 
         // 指定图表的配置项和数据
         var option = option = {
