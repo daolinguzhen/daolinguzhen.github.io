@@ -12,11 +12,11 @@
 <h3 id="3、文中插入Mermaid语法"><a href="#3、文中插入Mermaid语法" class="headerlink" title="3、文中插入Mermaid语法"></a>3、文中插入Mermaid语法</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% echarts 400 &#x27;85%&#x27; %&#125;</span><br><span class="line">此处放ECharts代码</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
 
 <p>&ensp;&ensp;&ensp;&ensp;代码内容可自己编写，也可以去<a href="https://echarts.apache.org/examples/zh/index.html">ECharts官网</a>复制，然后粘贴到这里。以下是“雷达图浏览器占比变化”示例操作<sub>（其它图表操作一样）</sub>：</p>
-<div id="echarts7405" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<div id="echarts4770" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts7405'));
+        var myChart = echarts.init(document.getElementById('echarts4770'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -95,11 +95,11 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo博客NexT主题中添加ECharts动态图表</span><br><span class="line">categories:</span><br><span class="line">  - NexT主题</span><br><span class="line">tags:</span><br><span class="line">  - 博客搭建</span><br><span class="line">  - 主题配置</span><br><span class="line">  - 经验技巧</span><br><span class="line">abbrlink: f18e8f82</span><br><span class="line">date: 2024-10-27 15:45:50</span><br><span class="line">top: true</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&#123;% echarts 400 &#x27;85%&#x27; %&#125;</span><br><span class="line">option = &#123;</span><br><span class="line">  title: &#123;</span><br><span class="line">    text: &#x27;浏览器比例&#x27;,</span><br><span class="line">    subtext: &#x27;假数据&#x27;,</span><br><span class="line">    top: 10,</span><br><span class="line">    left: 10</span><br><span class="line">  &#125;,</span><br><span class="line">  tooltip: &#123;</span><br><span class="line">    trigger: &#x27;item&#x27;</span><br><span class="line">  &#125;,</span><br><span class="line">  legend: &#123;</span><br><span class="line">    type: &#x27;scroll&#x27;,</span><br><span class="line">    bottom: 10,</span><br><span class="line">    data: (function () &#123;</span><br><span class="line">      var list = [];</span><br><span class="line">      for (var i = 1; i &lt;= 28; i++) &#123;</span><br><span class="line">        list.push(i + 2000 + &#x27;&#x27;);</span><br><span class="line">      &#125;</span><br><span class="line">      return list;</span><br><span class="line">    &#125;)()</span><br><span class="line">  &#125;,</span><br><span class="line">  visualMap: &#123;</span><br><span class="line">    top: &#x27;middle&#x27;,</span><br><span class="line">    right: 10,</span><br><span class="line">    color: [&#x27;red&#x27;, &#x27;yellow&#x27;],</span><br><span class="line">    calculable: true</span><br><span class="line">  &#125;,</span><br><span class="line">  radar: &#123;</span><br><span class="line">    indicator: [</span><br><span class="line">      &#123; text: &#x27;微软Edge浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;360浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;苹果Safari 浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;火狐浏览器&#x27;, max: 400 &#125;,</span><br><span class="line">      &#123; text: &#x27;谷歌Chrome浏览器&#x27;, max: 400 &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  series: (function () &#123;</span><br><span class="line">    var series = [];</span><br><span class="line">    for (var i = 1; i &lt;= 28; i++) &#123;</span><br><span class="line">      series.push(&#123;</span><br><span class="line">        type: &#x27;radar&#x27;,</span><br><span class="line">        symbol: &#x27;none&#x27;,</span><br><span class="line">        lineStyle: &#123;</span><br><span class="line">          width: 1</span><br><span class="line">        &#125;,</span><br><span class="line">        emphasis: &#123;</span><br><span class="line">          areaStyle: &#123;</span><br><span class="line">            color: &#x27;rgba(0,250,0,0.3)&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        data: [</span><br><span class="line">          &#123;</span><br><span class="line">            value: [</span><br><span class="line">              (40 - i) * 10,</span><br><span class="line">              (38 - i) * 4 + 60,</span><br><span class="line">              i * 5 + 10,</span><br><span class="line">              i * 9,</span><br><span class="line">              (i * i) / 2</span><br><span class="line">            ],</span><br><span class="line">            name: i + 2000 + &#x27;&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    return series;</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;;</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h3 id="几种常用的ECharts图表"><a href="#几种常用的ECharts图表" class="headerlink" title="几种常用的ECharts图表"></a>几种常用的ECharts图表</h3><h4 id="折线图-line"><a href="#折线图-line" class="headerlink" title="折线图 line"></a>折线图 line</h4><div id="echarts6060" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h3 id="几种常用的ECharts图表"><a href="#几种常用的ECharts图表" class="headerlink" title="几种常用的ECharts图表"></a>几种常用的ECharts图表</h3><h4 id="折线图-line"><a href="#折线图-line" class="headerlink" title="折线图 line"></a>折线图 line</h4><div id="echarts8799" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts6060'));
+        var myChart = echarts.init(document.getElementById('echarts8799'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -204,11 +204,11 @@
 </script>
 
 <hr>
-<h4 id="柱状图-bar"><a href="#柱状图-bar" class="headerlink" title="柱状图 bar"></a>柱状图 bar</h4><div id="echarts1679" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="柱状图-bar"><a href="#柱状图-bar" class="headerlink" title="柱状图 bar"></a>柱状图 bar</h4><div id="echarts7087" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts1679'));
+        var myChart = echarts.init(document.getElementById('echarts7087'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -232,11 +232,11 @@
 </script>
 
 <hr>
-<h4 id="饼图-pie"><a href="#饼图-pie" class="headerlink" title="饼图 pie"></a>饼图 pie</h4><div id="echarts4077" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="饼图-pie"><a href="#饼图-pie" class="headerlink" title="饼图 pie"></a>饼图 pie</h4><div id="echarts7102" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts4077'));
+        var myChart = echarts.init(document.getElementById('echarts7102'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -280,11 +280,11 @@
 </script>
 
 <hr>
-<h4 id="散点图-scatter"><a href="#散点图-scatter" class="headerlink" title="散点图 scatter"></a>散点图 scatter</h4><div id="echarts5245" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="散点图-scatter"><a href="#散点图-scatter" class="headerlink" title="散点图 scatter"></a>散点图 scatter</h4><div id="echarts8033" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts5245'));
+        var myChart = echarts.init(document.getElementById('echarts8033'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -564,11 +564,11 @@
 </script>
 
 <hr>
-<h4 id="K-线图-candlestick"><a href="#K-线图-candlestick" class="headerlink" title="K 线图 candlestick"></a>K 线图 candlestick</h4><div id="echarts3266" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="K-线图-candlestick"><a href="#K-线图-candlestick" class="headerlink" title="K 线图 candlestick"></a>K 线图 candlestick</h4><div id="echarts8505" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts3266'));
+        var myChart = echarts.init(document.getElementById('echarts8505'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -594,11 +594,11 @@
 </script>
 
 <hr>
-<h3 id="雷达图-radar"><a href="#雷达图-radar" class="headerlink" title="雷达图 radar"></a>雷达图 radar</h3><div id="echarts7332" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h3 id="雷达图-radar"><a href="#雷达图-radar" class="headerlink" title="雷达图 radar"></a>雷达图 radar</h3><div id="echarts5525" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts7332'));
+        var myChart = echarts.init(document.getElementById('echarts5525'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -645,11 +645,11 @@
 <h3 id="盒须图-boxplot"><a href="#盒须图-boxplot" class="headerlink" title="盒须图 boxplot"></a>盒须图 boxplot</h3><blockquote>
 <p>1、基础盒须图</p>
 </blockquote>
-<div id="echarts610" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<div id="echarts7925" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts610'));
+        var myChart = echarts.init(document.getElementById('echarts7925'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -741,11 +741,11 @@
 </script>
 
 <hr>
-<h4 id="关系图-graph"><a href="#关系图-graph" class="headerlink" title="关系图 graph"></a>关系图 graph</h4><div id="echarts2940" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="关系图-graph"><a href="#关系图-graph" class="headerlink" title="关系图 graph"></a>关系图 graph</h4><div id="echarts5601" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts2940'));
+        var myChart = echarts.init(document.getElementById('echarts5601'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -846,11 +846,11 @@
 </script>
 
 <hr>
-<h4 id="树图-tree"><a href="#树图-tree" class="headerlink" title="树图 tree"></a>树图 tree</h4><div id="echarts704" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="树图-tree"><a href="#树图-tree" class="headerlink" title="树图 tree"></a>树图 tree</h4><div id="echarts1752" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts704'));
+        var myChart = echarts.init(document.getElementById('echarts1752'));
 
         // 指定图表的配置项和数据
         var option = myChart.showLoading();
@@ -1089,11 +1089,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="旭日图-sunburst"><a href="#旭日图-sunburst" class="headerlink" title="旭日图 sunburst"></a>旭日图 sunburst</h4><div id="echarts7260" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="旭日图-sunburst"><a href="#旭日图-sunburst" class="headerlink" title="旭日图 sunburst"></a>旭日图 sunburst</h4><div id="echarts5506" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts7260'));
+        var myChart = echarts.init(document.getElementById('echarts5506'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -1221,11 +1221,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="平行坐标系-parallel"><a href="#平行坐标系-parallel" class="headerlink" title="平行坐标系 parallel"></a>平行坐标系 parallel</h4><div id="echarts8373" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="平行坐标系-parallel"><a href="#平行坐标系-parallel" class="headerlink" title="平行坐标系 parallel"></a>平行坐标系 parallel</h4><div id="echarts5403" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts8373'));
+        var myChart = echarts.init(document.getElementById('echarts5403'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -1258,11 +1258,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="桑基图-sankey"><a href="#桑基图-sankey" class="headerlink" title="桑基图 sankey"></a>桑基图 sankey</h4><div id="echarts1382" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="桑基图-sankey"><a href="#桑基图-sankey" class="headerlink" title="桑基图 sankey"></a>桑基图 sankey</h4><div id="echarts9635" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts1382'));
+        var myChart = echarts.init(document.getElementById('echarts9635'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2545,11 +2545,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="漏斗图-funnel"><a href="#漏斗图-funnel" class="headerlink" title="漏斗图 funnel"></a>漏斗图 funnel</h4><div id="echarts5949" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="漏斗图-funnel"><a href="#漏斗图-funnel" class="headerlink" title="漏斗图 funnel"></a>漏斗图 funnel</h4><div id="echarts5628" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts5949'));
+        var myChart = echarts.init(document.getElementById('echarts5628'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2620,11 +2620,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="仪表盘-gauge"><a href="#仪表盘-gauge" class="headerlink" title="仪表盘 gauge"></a>仪表盘 gauge</h4><div id="echarts7116" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="仪表盘-gauge"><a href="#仪表盘-gauge" class="headerlink" title="仪表盘 gauge"></a>仪表盘 gauge</h4><div id="echarts1407" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts7116'));
+        var myChart = echarts.init(document.getElementById('echarts1407'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2685,11 +2685,11 @@ myChart.setOption(
 </script>
 
 <hr>
-<h4 id="主题河流图-themeRiver"><a href="#主题河流图-themeRiver" class="headerlink" title="主题河流图 themeRiver"></a>主题河流图 themeRiver</h4><div id="echarts7908" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<h4 id="主题河流图-themeRiver"><a href="#主题河流图-themeRiver" class="headerlink" title="主题河流图 themeRiver"></a>主题河流图 themeRiver</h4><div id="echarts5556" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts7908'));
+        var myChart = echarts.init(document.getElementById('echarts5556'));
 
         // 指定图表的配置项和数据
         var option = option = {
@@ -2880,276 +2880,6 @@ myChart.setOption(
         <tag>主题配置</tag>
         <tag>经验技巧</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>计算器</title>
-    <url>/posts/a9ac12b.html</url>
-    <content><![CDATA[<p>计算器<span id="more"></span></p>
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>轻量计算器</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .calculator {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            padding: 20px;
-            width: 300px;
-        }
-        #expression {
-            width: 100%;
-            height: 60px;
-            font-size: 24px;
-            text-align: right;
-            border: none;
-            background-color: #f8f8f8;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-        .span-3 {
-            grid-column: span 3;
-        }
-        button {
-            padding: 15px;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #e0e0e0;
-        }
-        .operator {
-            background-color: #f1c40f;
-            color: white;
-        }
-        .operator:hover {
-            background-color: #d4ac0d;
-        }
-        .equals {
-            background-color: #3498db;
-            color: white;
-        }
-        .equals:hover {
-            background-color: #2980b9;
-        }
-        .clear, .backspace {
-            background-color: #e74c3c;
-            color: white;
-        }
-        .clear:hover, .backspace:hover {
-            background-color: #c0392b;
-        }
-        #history {
-            margin-top: 20px;
-            max-height: 150px;
-            overflow-y: auto;
-            border-top: 1px solid #e0e0e0;
-            padding-top: 10px;
-        }
-        #history p {
-            margin: 5px 0;
-            font-size: 14px;
-        }
-        .span-2 {
-            grid-column: span 2;
-        }
-        .clear-history {
-            background-color: #95a5a6;
-            color: white;
-        }
-        .clear-history:hover {
-            background-color: #7f8c8d;
-        }
-</style>
-</head>
-<body>
-    <div class="calculator">
-        <input type="text" id="expression" readonly>
-        <div class="buttons">
-            <button class="percent">%</button>
-            <button class="clear">清除</button>
-            <button class="backspace">退格</button>
-            <button class="operator">+</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button class="operator">-</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button class="operator">×</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button class="operator">÷</button>
-            <button class="span-2">0</button>
-            <button class="clear-history">清空记录</button>
-            <button class="equals">=</button>
-        </div>
-        <div id="history"></div>
-    </div>
-    <script>
-        let expression = ''; // 存储当前表达式
-        let lastResult = ''; // 存储上一次计算结果
-        const expressionDisplay = document.getElementById('expression');
-        // 将数字或运算符添加到显示屏
-        function appendToDisplay(value) {
-            if (lastResult !== '') {
-                if ('+-×÷%'.includes(value)) {
-                    expression = lastResult + value.replace('×', '*').replace('÷', '/');
-                } else {
-                    expression = value;
-                }
-                lastResult = '';
-            } else {
-                expression += value.replace('×', '*').replace('÷', '/');
-            }
-            expressionDisplay.value = expression;
-        }
-        // 清除显示屏
-        function clearDisplay() {
-            expression = '';
-            lastResult = '';
-            expressionDisplay.value = '';
-        }
-        // 退格功能
-        function backspace() {
-            expression = expression.slice(0, -1);
-            expressionDisplay.value = expression;
-        }
-        // 计算表达式结果
-        function calculate() {
-            try {
-                // 使用Function构造函数计算表达式
-                let result = Function('"use strict";return (' + expression + ')')();
-                if (isNaN(result) || !isFinite(result)) {
-                    throw new Error('无效的计算结果');
-                }
-                // 改进浮点数显示
-                result = formatResult(result);
-                addToHistory(expression, result);
-                lastResult = result.toString();
-                expression = lastResult;
-                expressionDisplay.value = expression;
-            } catch (error) {
-                expression = '计算错误: ' + error.message;
-                expressionDisplay.value = expression;
-                lastResult = '';
-            }
-        }
-        // 添加新函数来格式化结果
-        function formatResult(num) {
-            // 如果是整数，直接返回
-            if (Number.isInteger(num)) {
-                return num;
-            }
-            // 将数字转换为字符串
-            let str = num.toString();
-            // 如果数字很大或很小，使用指数表示法
-            if (Math.abs(num) < 1e-7 || Math.abs(num) > 1e11) {
-                return num.toExponential(6);
-            }
-            // 对于其他情况，限制小数位数到10位
-            let fixed = num.toFixed(10);
-            // 移除末尾的0
-            fixed = fixed.replace(/\.?0+$/, "");
-            return fixed;
-        }
-        // 添加计算历史记录
-        function addToHistory(expr, res) {
-            const historyDiv = document.getElementById('history');
-            const historyItem = document.createElement('p');
-            historyItem.textContent = `${expr} = ${res}`;
-            historyDiv.insertBefore(historyItem, historyDiv.firstChild);
-            // 限制历史记录最多显示10条
-            if (historyDiv.childElementCount > 10) {
-                      historyDiv.removeChild(historyDiv.lastChild);
-            }
-        }
-        // 键盘事件监听器
-        document.addEventListener('keydown', function(event) {
-            const key = event.key;
-            if (/[0-9+\-*/.=%]/.test(key)) {
-                event.preventDefault();
-                if (key === '=') {
-                    calculate();
-                } else if (key === '%') {
-                    calculatePercent();
-                } else {
-                    appendToDisplay(key);
-                }
-            } else if (key === 'Enter') {
-                event.preventDefault();
-                calculate();
-            } else if (key === 'Backspace') {
-                event.preventDefault();
-                backspace();
-            } else if (key === 'Escape') {
-                event.preventDefault();
-                clearDisplay();
-            }
-        });
-        // 修改百分比功能
-        function calculatePercent() {
-            if (expression === '') {
-                expression = '0';
-            } else {
-                try {
-                    let result = Function('"use strict";return (' + expression + ')')();
-                    result = result / 100;
-                    expression = formatResult(result).toString();
-                } catch (error) {
-                    expression = '计算错误';
-                }
-            }
-            expressionDisplay.value = expression;
-        }
-        // 添加清除历史记录的函数
-        function clearHistory() {
-            const historyDiv = document.getElementById('history');
-            historyDiv.innerHTML = '';
-        }
-        // 修改事件委托
-        document.querySelector('.buttons').addEventListener('click', function(event) {
-            if (event.target.tagName === 'BUTTON') {
-                if (event.target.classList.contains('equals')) {
-                    calculate();
-                } else if (event.target.classList.contains('clear')) {
-                    clearDisplay();
-                } else if (event.target.classList.contains('backspace')) {
-                    backspace();
-                } else if (event.target.classList.contains('percent')) {
-                    calculatePercent();
-                } else if (event.target.classList.contains('clear-history')) {
-                    clearHistory();
-                } else {
-                    appendToDisplay(event.target.textContent);
-                }
-            }
-        });
-</script>
-</body>
-</html>]]></content>
   </entry>
   <entry>
     <title>秋韵道林：音乐与稻田交织的绝美华章</title>
