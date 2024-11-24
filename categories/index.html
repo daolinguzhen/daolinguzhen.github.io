@@ -496,11 +496,11 @@ translateInitilization();
 </script>
       
         </ul>
-<span id="timeDate">载入天数...</span>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
     <script>
         var now = new Date();
         function createtime() {
-            var grt= new Date("05/05/2024");
+            var grt= new Date("05/05/2024 11:26:00");
             now.setTime(now.getTime()+250);
             days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
             hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
@@ -508,7 +508,8 @@ translateInitilization();
             mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
             seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
             snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
-            document.getElementById("timeDate").innerHTML = "🌏 本站已艰难运行了 "+dnum+" 天";
+            document.getElementById("timeDate").innerHTML = "🌏 本站已艰难运行了 "+'<font style=color:#afb4db>'+dnum+'</font>'+" 天 ";
+            document.getElementById("times").innerHTML = '<font style=color:#f391a9>'+hnum+'</font>' + " 小时 " + '<font style=color:#fdb933>'+mnum+'</font>' + " 分 " + '<font style=color:#a3cf62>'+snum+'</font>' + " 秒";
         }
     setInterval("createtime()",250);
 </script>
@@ -573,7 +574,7 @@ translateInitilization();
         radius: ['15%', '90%'],
         center: ['50%', '55%'],
         sort: 'desc',
-        data: [{"name":"乡镇动态","value":397,"path":"categories/乡镇动态/","id":"cm3u320bd001567s62bue2z65","parentId":"0"},{"name":"道林文赋","value":130,"path":"categories/道林文赋/","id":"cm3u320br002s67s6g3px12g8","parentId":"0"},{"name":"族谱摘录","value":67,"path":"categories/族谱摘录/","id":"cm3u320bv003567s608k917rp","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm3u320aw000467s632xaavpi","parentId":"0"},{"name":"古镇景区","value":14,"path":"categories/古镇景区/","id":"cm3u320bl002267s63iph1oxh","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm3u320dv00bm67s6htgk2893","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm3u320ec00dz67s6gs4ign52","parentId":"0"}],
+        data: [{"name":"乡镇动态","value":397,"path":"categories/乡镇动态/","id":"cm3v2mc94000sr4s61gr9g4o7","parentId":"0"},{"name":"道林文赋","value":130,"path":"categories/道林文赋/","id":"cm3v2mc9k0027r4s6f8dp67h7","parentId":"0"},{"name":"族谱摘录","value":67,"path":"categories/族谱摘录/","id":"cm3v2mc9p002sr4s6bm139cen","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm3v2mc8r0004r4s6d66b7wgp","parentId":"0"},{"name":"古镇景区","value":14,"path":"categories/古镇景区/","id":"cm3v2mc9g001ur4s6796eegkx","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm3v2mcce00d6r4s64h1bbflh","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm3v2mcch00dlr4s62qvlhh2m","parentId":"0"}],
         itemStyle: {
           borderColor: '#fff',
           borderWidth: 2,
@@ -595,7 +596,7 @@ translateInitilization();
           color: color,
           formatter: '{b} : {c} ({d}%)'
         },
-        data: [{"name":"乡镇动态","value":397,"path":"categories/乡镇动态/","id":"cm3u320bd001567s62bue2z65","parentId":"0"},{"name":"道林文赋","value":130,"path":"categories/道林文赋/","id":"cm3u320br002s67s6g3px12g8","parentId":"0"},{"name":"族谱摘录","value":67,"path":"categories/族谱摘录/","id":"cm3u320bv003567s608k917rp","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm3u320aw000467s632xaavpi","parentId":"0"},{"name":"古镇景区","value":14,"path":"categories/古镇景区/","id":"cm3u320bl002267s63iph1oxh","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm3u320dv00bm67s6htgk2893","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm3u320ec00dz67s6gs4ign52","parentId":"0"}],
+        data: [{"name":"乡镇动态","value":397,"path":"categories/乡镇动态/","id":"cm3v2mc94000sr4s61gr9g4o7","parentId":"0"},{"name":"道林文赋","value":130,"path":"categories/道林文赋/","id":"cm3v2mc9k0027r4s6f8dp67h7","parentId":"0"},{"name":"族谱摘录","value":67,"path":"categories/族谱摘录/","id":"cm3v2mc9p002sr4s6bm139cen","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm3v2mc8r0004r4s6d66b7wgp","parentId":"0"},{"name":"古镇景区","value":14,"path":"categories/古镇景区/","id":"cm3v2mc9g001ur4s6796eegkx","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm3v2mcce00d6r4s64h1bbflh","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm3v2mcch00dlr4s62qvlhh2m","parentId":"0"}],
         itemStyle: {
           emphasis: {
             shadowBlur: 10,

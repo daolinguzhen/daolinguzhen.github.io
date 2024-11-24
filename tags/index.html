@@ -496,11 +496,11 @@ translateInitilization();
 </script>
       
         </ul>
-<span id="timeDate">载入天数...</span>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
     <script>
         var now = new Date();
         function createtime() {
-            var grt= new Date("05/05/2024");
+            var grt= new Date("05/05/2024 11:26:00");
             now.setTime(now.getTime()+250);
             days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
             hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
@@ -508,7 +508,8 @@ translateInitilization();
             mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
             seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
             snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
-            document.getElementById("timeDate").innerHTML = "🌏 本站已艰难运行了 "+dnum+" 天";
+            document.getElementById("timeDate").innerHTML = "🌏 本站已艰难运行了 "+'<font style=color:#afb4db>'+dnum+'</font>'+" 天 ";
+            document.getElementById("times").innerHTML = '<font style=color:#f391a9>'+hnum+'</font>' + " 小时 " + '<font style=color:#fdb933>'+mnum+'</font>' + " 分 " + '<font style=color:#a3cf62>'+snum+'</font>' + " 秒";
         }
     setInterval("createtime()",250);
 </script>
