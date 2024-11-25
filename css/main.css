@@ -186,7 +186,7 @@ body {
   background: var(--body-bg-color);
   box-sizing: border-box;
   color: var(--text-color);
-  font-family: LXGW Wenkai Screen, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1em;
   line-height: 2;
   min-height: 100%;
@@ -199,7 +199,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: LXGW Wenkai Screen, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: LXGW Wenkai Screen, Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 30px 0 15px;
@@ -586,7 +586,7 @@ pre figcaption a:hover {
 }
 pre,
 code {
-  font-family: consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei';
+  font-family: LXGW Wenkai Screen, consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei';
 }
 code {
   border-radius: 3px;
@@ -1215,7 +1215,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: LXGW Wenkai Screen, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: LXGW Wenkai Screen, Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   line-height: 1.5;
@@ -1357,7 +1357,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #dabb3e;
+    background: #112a7a;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -1930,7 +1930,7 @@ pre code {
   width: 4px;
 }
 .post-body {
-  font-family: LXGW Wenkai Screen, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: LXGW Wenkai Screen, Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   overflow-wrap: break-word;
 }
 @media (min-width: 1200px) {
@@ -2116,7 +2116,7 @@ pre code {
 }
 .posts-expand .post-meta-container {
   color: #999;
-  font-family: LXGW Wenkai Screen, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: LXGW Wenkai Screen, Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 0.75em;
   margin-top: 3px;
 }
@@ -3212,7 +3212,7 @@ h1 {
   font-size: 48px;
 }
 p {
-  font-family: 'Lato', sans-serif;
+  font-family: LXGW Wenkai Screen;
   letter-spacing: 1px;
   font-size: 14px;
   color: #333;
