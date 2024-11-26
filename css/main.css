@@ -1357,7 +1357,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #660a95;
+    background: #08ddff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2950,12 +2950,12 @@ p {
 }
 /* 图标颜色及大小 */
 .fa {
-  font-size: 20px;
+  font-size: 15px;
 }
 /* 菜单栏 */
 .fa-house-user {
   color: #e74c3c;
-  font-size: 20px;
+  font-size: 15px;
 }
 .fa-archive {
   color: #1abc9c;
@@ -2968,9 +2968,6 @@ p {
 }
 .fa-link {
   color: #6a3427;
-}
-.fa-address-card {
-  color: #9b59b6;
 }
 .fa-images {
   color: #f0f;
@@ -2989,6 +2986,9 @@ p {
 }
 .fa-bookmark {
   color: #0f0;
+}
+.fa-address-card {
+  color: #9b59b6;
 }
 /* 侧边栏站点标题背景 */
 .site-brand-container {
@@ -3106,29 +3106,6 @@ span.exturl:hover {
 :link {
   cursor: url("/images/pointer.cur"), auto;
 }
-/* 分类页样式 */
-.category-list-link:hover {
-  transform: scale(1.1);
-  box-shadow: 10px 10px 15px 2px rgba(0,0,0,0.12), 0 0 6px 0 rgba(104,104,105,0.1);
-  border-radius: 15px;
-  padding: 6px 16px;
-  margin-left: 0px;
-  font-size: 16px;
-  transition-duration: 0.15s;
-}
-.category-list a {
-  color: #6f42c1;
-}
-a.category-list-link:before {
-  top: 10px;
-  width: 18px;
-  height: 18px;
-  content: "📚";
-  margin-right: 5px;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: 15px;
-  line-height: 18px;
-}
 /* 归档页样式 */
 .posts-collapse .post-header {
   position: relative;
@@ -3151,6 +3128,69 @@ a.category-list-link:before {
 .posts-collapse .post-title {
   margin-left: 70px;
 }
+/* 卡片式分类样式 */
+.category-all-page .category-all-title {
+  text-align: center;
+}
+.category-all-page .category-all {
+  margin-top: 20px;
+}
+.category-all-page .category-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.category-all-page .category-list-item {
+  border-radius: 10px;
+  margin: 15px 20px;
+  padding: 20px 20px 20px 30px;
+  height: 40px;
+  line-height: 40px;
+  width: 40%;
+  max-width: 280px;
+  min-width: 200px;
+  text-align: left;
+  display: inline-block;
+  background: #f5deb3;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.07), 0 8px 16px rgba(0,0,0,0.07), 0 16px 32px rgba(0,0,0,0.07), 0 32px 64px rgba(0,0,0,0.07);
+}
+.category-all-page .category-list-count {
+  display: block;
+  position: relative;
+  float: right;
+  height: 30px;
+  width: 50px;
+  line-height: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 20px;
+  text-align: center;
+  color: #fc6423;
+  background: #7b68ee;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.07), 0 8px 16px rgba(0,0,0,0.07), 0 16px 32px rgba(0,0,0,0.07), 0 32px 64px rgba(0,0,0,0.07);
+}
+.category-all-page .category-list-count:before {
+  content: '';
+}
+.category-all-page .category-list-count:after {
+  content: '';
+}
+.category-all-page .category-list-child {
+  padding-left: 10px;
+}
+.category-list-link {
+  border-bottom: 0;
+}
+/* 圆形方框标签 */
+.tag-cloud a {
+  box-shadow: 0 1px 3px #6f42c1, 0 1px 2px #d9534f;
+  padding: 2px 10px;
+  margin: 8px;
+  background: rgba(193,66,92,0);
+  border-bottom: none;
+  border-radius: 20px;
+}
 /* 主页底部文章分页按钮(1.2.3.4.5)样式及颜色 */
 .pagination .page-number.current {
   background: #a166ab;
@@ -3162,15 +3202,6 @@ a.category-list-link:before {
   color: #8a2be2;
   font-weight: 500;
   border-radius: 30px 30px 30px 30px;
-}
-/* 圆形方框标签 */
-.tag-cloud a {
-  box-shadow: 0 1px 3px #6f42c1, 0 1px 2px #d9534f;
-  padding: 2px 10px;
-  margin: 8px;
-  background: rgba(193,66,92,0);
-  border-bottom: none;
-  border-radius: 20px;
 }
 /* 菜单栏透明度 */
 .header .header-inner {
