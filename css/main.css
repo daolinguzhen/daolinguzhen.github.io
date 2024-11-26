@@ -1357,7 +1357,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #08ddff;
+    background: #6aaaff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3252,7 +3252,7 @@ p {
   position: relative;
   text-align: left;
   background: linear-gradient(60deg, #543ab7 0%, #00acc1 100%);
-  color: #fff;
+  color: #f00;
 }
 .logo {
   width: 50px;
