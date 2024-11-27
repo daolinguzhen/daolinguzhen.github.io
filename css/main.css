@@ -1357,7 +1357,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #7a9a0f;
+    background: #5c38d6;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2950,12 +2950,11 @@ p {
 }
 /* 图标颜色及大小 */
 .fa {
-  font-size: 15px;
+  font-size: 25px;
 }
 /* 菜单栏 */
 .fa-house-user {
   color: #e74c3c;
-  font-size: 15px;
 }
 .fa-archive {
   color: #1abc9c;
@@ -3321,6 +3320,29 @@ p {
   h1 {
     font-size: 24px;
   }
+}
+/* 侧边栏菜单样式 */
+.site-nav li {
+  width: 90%;
+}
+.menu .menu-item a,
+.menu .menu-item span.exturl {
+  padding-left: 10px;
+  padding-right: 15px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.5) inset;
+  margin-left: 2.5%;
+  margin-bottom: 25px;
+  font-size: 25px;
+}
+.site-nav ul {
+  display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: start;
+  width: 100%;
+  margin: 0;
 }
 @keyframes sliding {
   to {
