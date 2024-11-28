@@ -1357,7 +1357,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #06ffd5;
+    background: #ffaa12;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3323,7 +3323,7 @@ p {
 }
 /* 侧边栏菜单样式 */
 .site-nav li {
-  width: 90%;
+  width: 48%;
 }
 .menu .menu-item a,
 .menu .menu-item span.exturl {
@@ -3331,9 +3331,13 @@ p {
   padding-right: 15px;
   border-radius: 15px;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.5) inset;
-  margin-left: 2.5%;
-  margin-bottom: 25px;
-  font-size: 30px;
+  font-size: 15px;
+  border: 1px solid #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 12.5%;
+  margin-bottom: 10px;
 }
 .site-nav ul {
   display: flex;
