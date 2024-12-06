@@ -205,22 +205,22 @@ h6 {
   margin: 30px 0 15px;
 }
 h1 {
-  font-size: 1.875em;
-}
-h2 {
-  font-size: 1.75em;
-}
-h3 {
-  font-size: 1.625em;
-}
-h4 {
   font-size: 1.5em;
 }
-h5 {
+h2 {
   font-size: 1.375em;
 }
-h6 {
+h3 {
   font-size: 1.25em;
+}
+h4 {
+  font-size: 1.125em;
+}
+h5 {
+  font-size: 1em;
+}
+h6 {
+  font-size: 0.875em;
 }
 p {
   margin: 0 0 20px;
@@ -1357,7 +1357,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #2290c9;
+    background: #9f1bee;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
