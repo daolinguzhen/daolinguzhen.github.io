@@ -1345,7 +1345,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #33ffb3;
+    background: #59a74b;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3242,9 +3242,6 @@ span.exturl:hover {
 /* 侧边栏透明度 */
 .sidebar {
   background: rgba(255,255,255,0);
-}
-.sidebar-inner {
-  background: rgba(255,255,255,0.85);
 }
 .site-brand-container {
   opacity: 0.8;
