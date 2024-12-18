@@ -1345,7 +1345,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #59a74b;
+    background: #7401d4;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -1679,7 +1679,6 @@ pre code {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  flex-direction: column;
 }
 .links-of-blogroll-item {
   max-width: calc(100% - 20px);
@@ -3015,12 +3014,16 @@ p {
   background-position: 70% 20%;
   background-size: cover;
 }
-/* 背景图片设置 */
+/* 背景图片 */
 body {
   background-image: url("https://s3.bmp.ovh/imgs/2024/12/08/6a6adfdfb1e22220.jpeg");
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-attachment: fixed;
-  background-size: 100% 100%;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: none;
+  }
 }
 /* 文章底部彩色标签样式 */
 .posts-expand .post-tags a {
@@ -3303,6 +3306,17 @@ figure.highlight {
   font-family: $font-family-quote;
   font-size: 0.9em;
 }
+/* 文章超链接波浪线 */
+a:hover {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23ff3300' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
+  background-size: 20px auto;
+  animation: waveMove 1s infinite linear;
+  border-bottom: 1px;
+  color: #f00;
+}
+.posts-expand .post-title-link {
+  -webkit-background-clip: text;
+}
 @keyframes sliding {
   to {
     background-position: -2000vw;
@@ -3311,5 +3325,13 @@ figure.highlight {
 @keyframes sliding {
   to {
     background-position: -2000vw;
+  }
+}
+@keyframes waveMove {
+  from {
+    background-position: 0 100%;
+  }
+  to {
+    background-position: -20px 100%;
   }
 }
