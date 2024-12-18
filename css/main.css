@@ -1345,7 +1345,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #40faeb;
+    background: #32b8ff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2623,7 +2623,7 @@ header.header {
 .main-inner {
   border-radius: 20px 20px 20px 20px;
   box-sizing: border-box;
-  width: calc(100% - 282px);
+  width: calc(100% - 270px);
 }
 @media (max-width: 991px) {
   .main-inner {
@@ -2632,7 +2632,7 @@ header.header {
   }
 }
 .footer-inner {
-  padding-left: 282px;
+  padding-left: 270px;
 }
 @media (max-width: 991px) {
   .footer-inner {
@@ -2642,7 +2642,7 @@ header.header {
   }
 }
 .column {
-  width: 270px;
+  width: 258px;
 }
 @media (max-width: 991px) {
   .column {
@@ -3014,16 +3014,12 @@ p {
   background-position: 70% 20%;
   background-size: cover;
 }
-/* 背景图片 */
+/* 背景图片设置 */
 body {
   background-image: url("https://s3.bmp.ovh/imgs/2024/12/08/6a6adfdfb1e22220.jpeg");
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-attachment: fixed;
-}
-@media (prefers-color-scheme: dark) {
-  body {
-    background-image: none;
-  }
+  background-size: 100% 100%;
 }
 /* 文章底部彩色标签样式 */
 .posts-expand .post-tags a {
@@ -3306,17 +3302,6 @@ figure.highlight {
   font-family: $font-family-quote;
   font-size: 0.9em;
 }
-/* 文章超链接波浪线 */
-a:hover {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23ff3300' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
-  background-size: 20px auto;
-  animation: waveMove 1s infinite linear;
-  border-bottom: 1px;
-  color: #f00;
-}
-.posts-expand .post-title-link {
-  -webkit-background-clip: text;
-}
 @keyframes sliding {
   to {
     background-position: -2000vw;
@@ -3325,13 +3310,5 @@ a:hover {
 @keyframes sliding {
   to {
     background-position: -2000vw;
-  }
-}
-@keyframes waveMove {
-  from {
-    background-position: 0 100%;
-  }
-  to {
-    background-position: -20px 100%;
   }
 }
