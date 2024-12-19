@@ -1345,7 +1345,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #17eb29;
+    background: #74c4ff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3295,12 +3295,6 @@ figure.highlight {
 .site-subtitle {
   color: var(--brand-color);
   font-size: 0.85em;
-}
-/* 站点描述介绍 */
-.site-description {
-  color: var(--blockquote-color);
-  font-family: $font-family-quote;
-  font-size: 0.9em;
 }
 @keyframes sliding {
   to {
