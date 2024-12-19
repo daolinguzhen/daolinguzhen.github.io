@@ -1345,7 +1345,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #eb7800;
+    background: #ff6508;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3279,6 +3279,17 @@ figure.highlight {
   justify-content: start;
   width: 100%;
   margin: 0;
+}
+/* 顶部边距 */
+.header,
+.main-inner {
+  margin-top: 10px;
+}
+@media (max-width: 767px) {
+  .header,
+  .main-inner {
+    margin-top: 0;
+  }
 }
 /* 站点副标题颜色 */
 .site-subtitle {
