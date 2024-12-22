@@ -1345,7 +1345,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #340f08;
+    background: #b5d0ff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2905,7 +2905,9 @@ header.header {
   }
 }
 /* 首行缩进两个字符 */
-p {
+.markdown-body p,
+.prose p,
+.post-body p {
   text-indent: 2em;
 }
 /* 相册主页面 */
