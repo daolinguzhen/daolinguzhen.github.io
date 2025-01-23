@@ -1402,7 +1402,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #5bff42;
+    background: #acf214;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2965,7 +2965,6 @@ header.header {
 /* 文章段落首行缩进两个字符 */
 p {
   text-indent: 2em;
-  padding: 0px;
   margin: 0px;
 }
 /* 相册主页面 */
