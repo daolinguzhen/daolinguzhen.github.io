@@ -516,6 +516,14 @@ translateInitilization();
     setInterval("createtime()",250);
 </script>
       </div>
+      <br>
+      <div class="cd-count-left">
+        <span class="cd-text">距离</span>
+        <span class="cd-name" id="eventName"></span>
+        <span class="cd-time" id="daysUntil"></span>
+        <span class="cd-date" id="eventDate"></span>
+      </div>
+      <div id="countRight" class="cd-count-right"></div>
     </div>
   </aside>
 
@@ -576,7 +584,7 @@ translateInitilization();
         radius: ['15%', '90%'],
         center: ['50%', '55%'],
         sort: 'desc',
-        data: [{"name":"乡镇动态","value":422,"path":"categories/乡镇动态/","id":"cm6a4oprn00215ss6653r8a8t","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm6a4ops1003l5ss60kt2bwxk","parentId":"0"},{"name":"族谱摘录","value":68,"path":"categories/族谱摘录/","id":"cm6a4ops3003u5ss64qhdg5n7","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm6a4opqr00045ss6ggfceq8d","parentId":"0"},{"name":"古镇景区","value":16,"path":"categories/古镇景区/","id":"cm6a4oprd00155ss6dqvm2qcc","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm6a4opu200ca5ss661l775kt","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm6a4opuy00f05ss6ajsn7lil","parentId":"0"},{"name":"NexT主题","value":2,"path":"categories/NexT主题/","id":"cm6a4oprh001i5ss6042e57wf","parentId":"0"}],
+        data: [{"name":"乡镇动态","value":422,"path":"categories/乡镇动态/","id":"cm6bv3ogt001t84s639vic8xj","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm6bv3oh3002w84s64iyxhza6","parentId":"0"},{"name":"族谱摘录","value":68,"path":"categories/族谱摘录/","id":"cm6bv3oh6003b84s6hv9kd079","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm6bv3og3000484s6hgoh814w","parentId":"0"},{"name":"古镇景区","value":16,"path":"categories/古镇景区/","id":"cm6bv3ogm001584s65dzv2iuc","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm6bv3oj500c584s61hy0394m","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm6bv3ojq00ez84s66xoha9xf","parentId":"0"},{"name":"NexT主题","value":2,"path":"categories/NexT主题/","id":"cm6bv3ogq001i84s67dyrebjw","parentId":"0"}],
         itemStyle: {
           borderColor: '#fff',
           borderWidth: 2,
@@ -598,7 +606,7 @@ translateInitilization();
           color: color,
           formatter: '{b} : {c} ({d}%)'
         },
-        data: [{"name":"乡镇动态","value":422,"path":"categories/乡镇动态/","id":"cm6a4oprn00215ss6653r8a8t","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm6a4ops1003l5ss60kt2bwxk","parentId":"0"},{"name":"族谱摘录","value":68,"path":"categories/族谱摘录/","id":"cm6a4ops3003u5ss64qhdg5n7","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm6a4opqr00045ss6ggfceq8d","parentId":"0"},{"name":"古镇景区","value":16,"path":"categories/古镇景区/","id":"cm6a4oprd00155ss6dqvm2qcc","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm6a4opu200ca5ss661l775kt","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm6a4opuy00f05ss6ajsn7lil","parentId":"0"},{"name":"NexT主题","value":2,"path":"categories/NexT主题/","id":"cm6a4oprh001i5ss6042e57wf","parentId":"0"}],
+        data: [{"name":"乡镇动态","value":422,"path":"categories/乡镇动态/","id":"cm6bv3ogt001t84s639vic8xj","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm6bv3oh3002w84s64iyxhza6","parentId":"0"},{"name":"族谱摘录","value":68,"path":"categories/族谱摘录/","id":"cm6bv3oh6003b84s6hv9kd079","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm6bv3og3000484s6hgoh814w","parentId":"0"},{"name":"古镇景区","value":16,"path":"categories/古镇景区/","id":"cm6bv3ogm001584s65dzv2iuc","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm6bv3oj500c584s61hy0394m","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm6bv3ojq00ez84s66xoha9xf","parentId":"0"},{"name":"NexT主题","value":2,"path":"categories/NexT主题/","id":"cm6bv3ogq001i84s67dyrebjw","parentId":"0"}],
         itemStyle: {
           emphasis: {
             shadowBlur: 10,
@@ -764,7 +772,8 @@ translateInitilization();
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
 
-
+  <script src="/js/countdown.js"></script>
+  
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
