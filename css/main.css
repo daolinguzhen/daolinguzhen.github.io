@@ -1402,7 +1402,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #5d14c7;
+    background: #11acec;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3075,7 +3075,7 @@ p {
 }
 /* 背景图片设置 */
 body {
-  background-image: url("https://s3.bmp.ovh/imgs/2024/12/08/6a6adfdfb1e22220.jpeg");
+  background-image: url("https://s3.bmp.ovh/imgs/2025/01/27/64eccd7a7929c711.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
