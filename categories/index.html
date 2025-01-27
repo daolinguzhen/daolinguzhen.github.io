@@ -584,7 +584,7 @@ translateInitilization();
         radius: ['15%', '90%'],
         center: ['50%', '55%'],
         sort: 'desc',
-        data: [{"name":"乡镇动态","value":422,"path":"categories/乡镇动态/","id":"cm6bwztsb001pd7s6g89q9qbe","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm6bwztsq0030d7s604dgawwu","parentId":"0"},{"name":"族谱摘录","value":68,"path":"categories/族谱摘录/","id":"cm6bwztss003ad7s6cw3q6rcl","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm6bwztro0004d7s68o84e2d9","parentId":"0"},{"name":"古镇景区","value":16,"path":"categories/古镇景区/","id":"cm6bwzts50011d7s65di87j3b","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm6bwztuq00bwd7s6cy625jty","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm6bwztvb00eqd7s6e6dwhcma","parentId":"0"},{"name":"NexT主题","value":2,"path":"categories/NexT主题/","id":"cm6bwzts8001ed7s6cjiv6uf3","parentId":"0"}],
+        data: [{"name":"乡镇动态","value":422,"path":"categories/乡镇动态/","id":"cm6erpmi5001yjos68zxm0vv8","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm6erpmil003bjos695a17izr","parentId":"0"},{"name":"族谱摘录","value":68,"path":"categories/族谱摘录/","id":"cm6erpmin003jjos63kr2fg0w","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm6erpmhe0004jos609k4asgb","parentId":"0"},{"name":"古镇景区","value":16,"path":"categories/古镇景区/","id":"cm6erpmhv0011jos61obwb86a","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm6erpmks00c8jos6b37u4nax","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm6erpmle00f2jos63zrldom1","parentId":"0"},{"name":"NexT主题","value":2,"path":"categories/NexT主题/","id":"cm6erpmhz001ejos6dxzg1h06","parentId":"0"}],
         itemStyle: {
           borderColor: '#fff',
           borderWidth: 2,
@@ -606,7 +606,7 @@ translateInitilization();
           color: color,
           formatter: '{b} : {c} ({d}%)'
         },
-        data: [{"name":"乡镇动态","value":422,"path":"categories/乡镇动态/","id":"cm6bwztsb001pd7s6g89q9qbe","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm6bwztsq0030d7s604dgawwu","parentId":"0"},{"name":"族谱摘录","value":68,"path":"categories/族谱摘录/","id":"cm6bwztss003ad7s6cw3q6rcl","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm6bwztro0004d7s68o84e2d9","parentId":"0"},{"name":"古镇景区","value":16,"path":"categories/古镇景区/","id":"cm6bwzts50011d7s65di87j3b","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm6bwztuq00bwd7s6cy625jty","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm6bwztvb00eqd7s6e6dwhcma","parentId":"0"},{"name":"NexT主题","value":2,"path":"categories/NexT主题/","id":"cm6bwzts8001ed7s6cjiv6uf3","parentId":"0"}],
+        data: [{"name":"乡镇动态","value":422,"path":"categories/乡镇动态/","id":"cm6erpmi5001yjos68zxm0vv8","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm6erpmil003bjos695a17izr","parentId":"0"},{"name":"族谱摘录","value":68,"path":"categories/族谱摘录/","id":"cm6erpmin003jjos63kr2fg0w","parentId":"0"},{"name":"信息公示","value":64,"path":"categories/信息公示/","id":"cm6erpmhe0004jos609k4asgb","parentId":"0"},{"name":"古镇景区","value":16,"path":"categories/古镇景区/","id":"cm6erpmhv0011jos61obwb86a","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm6erpmks00c8jos6b37u4nax","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm6erpmle00f2jos63zrldom1","parentId":"0"},{"name":"NexT主题","value":2,"path":"categories/NexT主题/","id":"cm6erpmhz001ejos6dxzg1h06","parentId":"0"}],
         itemStyle: {
           emphasis: {
             shadowBlur: 10,
@@ -903,4 +903,184 @@ darkmode.showWidget();
   
   
       <script async="" src="/js/love.js"></script>
-  </body></html><!-- 鼠标点击浮出爱心 -->
+  
+
+<!-- 灯笼样式开始 -->
+<style>
+.deng-box2 {
+	position: fixed;
+	top: -40px;
+	left: -20px;
+	z-index: 9999;
+	pointer-events: none
+}
+.deng {
+	position: relative;
+	width: 120px;
+	height: 90px;
+	margin: 50px;
+	background: #d8000f;
+	background: rgba(216,0,15,.8);
+	border-radius: 50% 50%;
+	-webkit-transform-origin: 50% -100px;
+	-webkit-animation: swing 3s infinite ease-in-out;
+	box-shadow: -5px 5px 50px 4px #fa6c00
+}
+.deng:before {
+	position: absolute;
+	top: -7px;
+	left: 29px;
+	height: 12px;
+	width: 60px;
+	content: " ";
+	display: block;
+	z-index: 999;
+	border-radius: 5px 5px 0 0;
+	border: solid 1px #dc8f03;
+	background: orange;
+	background: linear-gradient(to right,#dc8f03,orange,#dc8f03,orange,#dc8f03)
+}
+.deng:after {
+	position: absolute;
+	bottom: -7px;
+	left: 10px;
+	height: 12px;
+	width: 60px;
+	content: " ";
+	display: block;
+	margin-left: 20px;
+	border-radius: 0 0 5px 5px;
+	border: solid 1px #dc8f03;
+	background: orange;
+	background: linear-gradient(to right,#dc8f03,orange,#dc8f03,orange,#dc8f03)
+}
+.xian {
+	position: absolute;
+	top: -20px;
+	left: 60px;
+	width: 2px;
+	height: 20px;
+	background: #dc8f03
+}
+.deng-a {
+	width: 100px;
+	height: 90px;
+	background: #d8000f;
+	background: rgba(216,0,15,.1);
+	margin: 12px 8px 8px 8px;
+	border-radius: 50% 50%;
+	border: 2px solid #dc8f03
+}
+
+.deng-b {
+	width: 45px;
+	height: 90px;
+	background: #d8000f;
+	background: rgba(216,0,15,.1);
+	margin: -4px 8px 8px 26px;
+	border-radius: 50% 50%;
+	border: 2px solid #dc8f03
+}
+.shui-a {
+	position: relative;
+	width: 5px;
+	height: 20px;
+	margin: -5px 0 0 59px;
+	-webkit-animation: swing 4s infinite ease-in-out;
+	-webkit-transform-origin: 50% -45px;
+	background: orange;
+	border-radius: 0 0 5px 5px
+}
+.shui-c {
+	position: absolute;
+	top: 18px;
+	left: -2px;
+	width: 10px;
+	height: 35px;
+	background: orange;
+	border-radius: 0 0 0 5px
+}
+.shui-b {
+	position: absolute;
+	top: 14px;
+	left: -2px;
+	width: 10px;
+	height: 10px;
+	background: #dc8f03;
+	border-radius: 50%
+}
+.deng-t {
+	font-family: 华文行楷,Arial,Lucida Grande,Tahoma,sans-serif;
+	font-size: 3.2rem;
+	color: #dc8f03;
+	font-weight: 700;
+	line-height: 85px;
+	text-align: center
+}
+@-moz-keyframes swing {
+	0% {
+		-moz-transform: rotate(-10deg)
+	}
+
+	50% {
+		-moz-transform: rotate(10deg)
+	}
+
+	100% {
+		-moz-transform: rotate(-10deg)
+	}
+}
+
+@-webkit-keyframes swing {
+	0% {
+		-webkit-transform: rotate(-10deg)
+	}
+
+	50% {
+		-webkit-transform: rotate(10deg)
+	}
+
+	100% {
+		-webkit-transform: rotate(-10deg)
+	}
+}
+</style>
+<div class="deng-box2">
+    <div class="deng">
+        <div class="xian"></div>
+        <div class="deng-a">
+            <div class="deng-b"><div class="deng-t">年</div></div>
+        </div>
+        <div class="shui shui-a"><div class="shui-c"></div><div class="shui-b"></div></div>
+    </div>
+</div>
+<div class="deng-box3">
+    <div class="deng">
+        <div class="xian"></div>
+        <div class="deng-a">
+            <div class="deng-b"><div class="deng-t">新</div></div>
+        </div>
+        <div class="shui shui-a"><div class="shui-c"></div><div class="shui-b"></div></div>
+      </div>
+</div>
+<div class="deng-box1">
+    <div class="deng">
+        <div class="xian"></div>
+        <div class="deng-a">
+            <div class="deng-b"><div class="deng-t">乐</div></div>
+        </div>
+        <div class="shui shui-a"><div class="shui-c"></div><div class="shui-b"></div></div>
+      </div>
+</div>
+<div class="deng-box">
+    <div class="deng">
+        <div class="xian"></div>
+        <div class="deng-a">
+          <div class="deng-b"><div class="deng-t">快</div></div>
+        </div>
+        <div class="shui shui-a"><div class="shui-c"></div><div class="shui-b"></div></div>
+      </div>
+      </div><style type="text/css">.deng-box{position:fixed;top:-40px;right:-20px;z-index:9999;pointer-events:none}.deng-box1{position:fixed;top:-30px;right:10px;z-index:9999;pointer-events:none}.deng-box2{position:fixed;top:-40px;left:-20px;z-index:9999;pointer-events:none}.deng-box3{position:fixed;top:-30px;left:10px;z-index:9999;pointer-events:none}.deng-box1 .deng,.deng-box3 .deng{position:relative;width:120px;height:90px;margin:50px;background:#d8000f;background:rgba(216,0,15,.8);border-radius:50% 50%;-webkit-transform-origin:50% -100px;-webkit-animation:swing 5s infinite ease-in-out;box-shadow:-5px 5px 30px 4px #fc903d}.deng{position:relative;width:120px;height:90px;margin:50px;background:#d8000f;background:rgba(216,0,15,.8);border-radius:50% 50%;-webkit-transform-origin:50% -100px;-webkit-animation:swing 3s infinite ease-in-out;box-shadow:-5px 5px 50px 4px #fa6c00}.deng-a{width:100px;height:90px;background:#d8000f;background:rgba(216,0,15,.1);margin:12px 8px 8px 8px;border-radius:50% 50%;border:2px solid #dc8f03}.deng-b{width:45px;height:90px;background:#d8000f;background:rgba(216,0,15,.1);margin:-4px 8px 8px 26px;border-radius:50% 50%;border:2px solid #dc8f03}.xian{position:absolute;top:-20px;left:60px;width:2px;height:20px;background:#dc8f03}.shui-a{position:relative;width:5px;height:20px;margin:-5px 0 0 59px;-webkit-animation:swing 4s infinite ease-in-out;-webkit-transform-origin:50% -45px;background:orange;border-radius:0 0 5px 5px}.shui-b{position:absolute;top:14px;left:-2px;width:10px;height:10px;background:#dc8f03;border-radius:50%}.shui-c{position:absolute;top:18px;left:-2px;width:10px;height:35px;background:orange;border-radius:0 0 0 5px}.deng:before{position:absolute;top:-7px;left:29px;height:12px;width:60px;content:" ";display:block;z-index:999;border-radius:5px 5px 0 0;border:solid 1px #dc8f03;background:orange;background:linear-gradient(to right,#dc8f03,orange,#dc8f03,orange,#dc8f03)}.deng:after{position:absolute;bottom:-7px;left:10px;height:12px;width:60px;content:" ";display:block;margin-left:20px;border-radius:0 0 5px 5px;border:solid 1px #dc8f03;background:orange;background:linear-gradient(to right,#dc8f03,orange,#dc8f03,orange,#dc8f03)}.deng-t{font-family:华文行楷,Arial,Lucida Grande,Tahoma,sans-serif;font-size:3.2rem;color:#dc8f03;font-weight:700;line-height:85px;text-align:center}.night .deng-box,.night .deng-box1,.night .deng-t{background:0 0!important}@-moz-keyframes swing{0%{-moz-transform:rotate(-10deg)}50%{-moz-transform:rotate(10deg)}100%{-moz-transform:rotate(-10deg)}}@-webkit-keyframes swing{0%{-webkit-transform:rotate(-10deg)}50%{-webkit-transform:rotate(10deg)}100%{-webkit-transform:rotate(-10deg)}}</style> 
+    
+
+<!-- 灯笼样式结束 --></body></html><!-- 鼠标点击浮出爱心 -->
