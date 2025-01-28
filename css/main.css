@@ -1402,7 +1402,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #32eb8e;
+    background: #20ff2d;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3360,11 +3360,6 @@ figure.highlight {
   color: var(--blockquote-color);
   font-family: $font-family-quote;
   font-size: 0.9em;
-}
-/* 侧边栏站点标题下圆角 */
-.header,
-.site-brand-container {
-  border-radius: 0 0 20px 20px !important;
 }
 /* 文本折叠框样式 */
 :not(.highlight) > div.table-container {
