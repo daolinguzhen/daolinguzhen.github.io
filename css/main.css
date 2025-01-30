@@ -1402,7 +1402,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #748c98;
+    background: #14b0cd;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3153,7 +3153,7 @@ span.exturl:hover {
 .sidebar-overview-active .sidebar-nav-overview:hover {
   color: #fc9d9a;
 }
-/* [阅读全文]按钮样式 */
+/* 阅读全文按钮样式 */
 .btn {
   color: #49b1f5;
   background: #fff;
@@ -3179,7 +3179,7 @@ span.exturl:hover {
   color: rgba(0,0,0,0.1); /* transparent IE 不支持 */
   animation: sliding 30s linear infinite;
 }
-/* 鼠标移动到文章标题上面时,底部横线颜色 */
+/* 鼠标移动到文章标题上面时底部横线颜色 */
 .posts-expand .post-title-link::before {
   background-image: linear-gradient(90deg, #a166ab 0, #ef4e7b 25%, #f37055 50%, #ef4e7b 75%, #a166ab 100%);
 }
@@ -3190,7 +3190,7 @@ span.exturl:hover {
 :link {
   cursor: url("/images/pointer.cur"), auto;
 }
-/* 归档页样式 */
+/* 归档样式 */
 .posts-collapse .post-header {
   position: relative;
   transition-duration: 0.2s;
@@ -3204,7 +3204,7 @@ span.exturl:hover {
   border-bottom: none;
   border-radius: 20px;
 }
-/* 归档页日期间隔距离调整 */
+/* 归档日期间隔距离调整 */
 .posts-collapse .post-meta {
   color: #5073b8;
   font-weight: 900;
@@ -3212,7 +3212,7 @@ span.exturl:hover {
 .posts-collapse .post-title {
   margin-left: 70px;
 }
-/* 卡片式分类样式 */
+/* 卡片分类样式 */
 .category-all-page .category-all-title {
   text-align: center;
 }
@@ -3275,7 +3275,7 @@ span.exturl:hover {
   border-bottom: none;
   border-radius: 20px;
 }
-/* 主页底部文章分页按钮(1.2.3.4.5)样式及颜色 */
+/* 主页底部文章分页按钮（1.2.3.4.5）样式及颜色 */
 .pagination .page-number.current {
   background: #a166ab;
   border-radius: 20px 20px 20px 20px;
@@ -3405,11 +3405,15 @@ details[open] > summary {
 details > div.details {
   padding: 0 10px;
 }
-/* link-grid友链边框圆角 */
+/* link-grid友链 */
 .link-grid-container,
 blockquote,
 .post-copyright ul {
   border-radius: 20px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 @keyframes sliding {
   to {
