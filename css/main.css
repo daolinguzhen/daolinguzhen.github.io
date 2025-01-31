@@ -1402,7 +1402,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #14b0cd;
+    background: #e4ffc7;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3414,6 +3414,22 @@ blockquote,
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+/* 侧边栏友链方框 */
+.sidebar-inner {
+  border-radius: 5px;
+}
+.sidebar-inner ul {
+  display: flex;
+  justify-content: center;
+}
+.sidebar-inner ul .links-of-blogroll-item {
+  width: 80%;
+  border: 1px solid #87cefa;
+  border-radius: 20px;
+}
+.sidebar-inner ul a {
+  border-bottom: 1px;
 }
 @keyframes sliding {
   to {
