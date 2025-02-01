@@ -1402,7 +1402,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #95fff6;
+    background: #57fbfe;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3405,15 +3405,11 @@ details[open] > summary {
 details > div.details {
   padding: 0 10px;
 }
-/* link-grid友链 */
+/* link-grid友链圆角 */
 .link-grid-container,
 blockquote,
 .post-copyright ul {
   border-radius: 20px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 @keyframes sliding {
   to {
