@@ -1433,7 +1433,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #6c444b;
+    background: #ff0fff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3729,12 +3729,6 @@ figure.highlight {
   color: #ffbe3d;
   font-size: 28px;
   -webkit-text-stroke: 1.2px #000;
-}
-/* 加密界面文本框 */
-.hbe-input-container label {
-  color: #ff1493 !important;
-  font-size: 32px !important;
-  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 /* card-grid卡片网格友链样式 */
 .polaroid {
