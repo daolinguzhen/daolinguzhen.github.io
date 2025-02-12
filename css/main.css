@@ -1433,7 +1433,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #7f779e;
+    background: #2da8e2;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3130,24 +3130,6 @@ body {
   background-attachment: fixed;
   background-size: 100% 100%;
 }
-/* 侧边栏主题自带友链样式 */
-.sidebar-inner {
-  border-radius: 5px;
-}
-.sidebar-inner ul {
-  display: flex;
-  justify-content: center;
-}
-.sidebar-inner ul .links-of-blogroll-item {
-  border: 1px solid #eee;
-  border-radius: 15px;
-}
-.sidebar-inner ul a {
-  border-bottom: 1px;
-}
-.sidebar-inner ul .links-of-blogroll-item:hover {
-  background-color: #87cefa;
-}
 /* 顶部边距 */
 .header,
 .main-inner {
@@ -3241,14 +3223,6 @@ span.exturl:hover {
 }
 .post-title a {
   background-color: transparent;
-}
-/* 文章超链接波浪线 */
-.post-body p>a:hover {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23ff3300' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
-  background-size: 20px auto;
-  animation: waveMove 1s infinite linear;
-  border-bottom: 0px;
-  color: #555;
 }
 /* 文章分段段落首行缩进两个字符 */
 .markdown-body p,
@@ -3722,13 +3696,6 @@ strong {
 figure.highlight {
   opacity: 0.9;
 }
-/* 文章加密摘要样式 */
-.article_encrypt_abstract {
-  text-align: center;
-  color: #ffbe3d;
-  font-size: 28px;
-  -webkit-text-stroke: 1.2px #000;
-}
 @keyframes sliding {
   to {
     background-position: -2000vw;
@@ -3737,13 +3704,5 @@ figure.highlight {
 @keyframes sliding {
   to {
     background-position: -2000vw;
-  }
-}
-@keyframes waveMove {
-  from {
-    background-position: 0 100%;
-  }
-  to {
-    background-position: -20px 100%;
   }
 }

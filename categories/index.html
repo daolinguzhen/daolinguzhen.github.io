@@ -515,6 +515,15 @@
           }
           setInterval("createtime()",250);
         </script>
+        <br>
+        <div class="cd-count-left">
+          <span class="cd-text">距离</span>
+          <span class="cd-name" id="eventName"></span>
+          <span class="cd-time" id="daysUntil"></span>
+          <span class="cd-date" id="eventDate"></span>
+        </div>
+        <div id="countRight" class="cd-count-right"></div>
+        <script src="/js/countdown.js"></script>
       </div>
     </div>
   </aside>
@@ -576,7 +585,7 @@
         radius: ['15%', '90%'],
         center: ['50%', '55%'],
         sort: 'desc',
-        data: [{"name":"乡镇动态","value":424,"path":"categories/乡镇动态/","id":"cm719eilb001puzs60seu3gtn","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm719eiln0030uzs61xhc9cne","parentId":"0"},{"name":"族谱摘录","value":70,"path":"categories/族谱摘录/","id":"cm719eils003auzs6b82dgd9v","parentId":"0"},{"name":"信息公示","value":67,"path":"categories/信息公示/","id":"cm719eiko0004uzs66j8kck3e","parentId":"0"},{"name":"古镇景区","value":17,"path":"categories/古镇景区/","id":"cm719eil40011uzs60uf52ofm","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm719eino00c3uzs633qre0dz","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm719eioa00euuzs63lymdw0p","parentId":"0"},{"name":"NexT主题","value":1,"path":"categories/NexT主题/","id":"cm719eil8001euzs64fg7eztu","parentId":"0"}],
+        data: [{"name":"乡镇动态","value":424,"path":"categories/乡镇动态/","id":"cm71ls9do001tq8s6befc3jl0","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm71ls9e50035q8s6dapo1be2","parentId":"0"},{"name":"族谱摘录","value":70,"path":"categories/族谱摘录/","id":"cm71ls9ea003pq8s624e77zgr","parentId":"0"},{"name":"信息公示","value":67,"path":"categories/信息公示/","id":"cm71ls9cs0004q8s66ovu2rkl","parentId":"0"},{"name":"古镇景区","value":17,"path":"categories/古镇景区/","id":"cm71ls9de0015q8s66m4ph4v0","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm71ls9gz00c7q8s682u7adnb","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm71ls9ht00f1q8s65zym60am","parentId":"0"},{"name":"NexT主题","value":1,"path":"categories/NexT主题/","id":"cm71ls9di001iq8s6888jdikg","parentId":"0"}],
         itemStyle: {
           borderColor: '#fff',
           borderWidth: 2,
@@ -598,7 +607,7 @@
           color: color,
           formatter: '{b} : {c} ({d}%)'
         },
-        data: [{"name":"乡镇动态","value":424,"path":"categories/乡镇动态/","id":"cm719eilb001puzs60seu3gtn","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm719eiln0030uzs61xhc9cne","parentId":"0"},{"name":"族谱摘录","value":70,"path":"categories/族谱摘录/","id":"cm719eils003auzs6b82dgd9v","parentId":"0"},{"name":"信息公示","value":67,"path":"categories/信息公示/","id":"cm719eiko0004uzs66j8kck3e","parentId":"0"},{"name":"古镇景区","value":17,"path":"categories/古镇景区/","id":"cm719eil40011uzs60uf52ofm","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm719eino00c3uzs633qre0dz","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm719eioa00euuzs63lymdw0p","parentId":"0"},{"name":"NexT主题","value":1,"path":"categories/NexT主题/","id":"cm719eil8001euzs64fg7eztu","parentId":"0"}],
+        data: [{"name":"乡镇动态","value":424,"path":"categories/乡镇动态/","id":"cm71ls9do001tq8s6befc3jl0","parentId":"0"},{"name":"道林文赋","value":136,"path":"categories/道林文赋/","id":"cm71ls9e50035q8s6dapo1be2","parentId":"0"},{"name":"族谱摘录","value":70,"path":"categories/族谱摘录/","id":"cm71ls9ea003pq8s624e77zgr","parentId":"0"},{"name":"信息公示","value":67,"path":"categories/信息公示/","id":"cm71ls9cs0004q8s66ovu2rkl","parentId":"0"},{"name":"古镇景区","value":17,"path":"categories/古镇景区/","id":"cm71ls9de0015q8s66m4ph4v0","parentId":"0"},{"name":"人物春秋","value":9,"path":"categories/人物春秋/","id":"cm71ls9gz00c7q8s682u7adnb","parentId":"0"},{"name":"镇域机构","value":6,"path":"categories/镇域机构/","id":"cm71ls9ht00f1q8s65zym60am","parentId":"0"},{"name":"NexT主题","value":1,"path":"categories/NexT主题/","id":"cm71ls9di001iq8s6888jdikg","parentId":"0"}],
         itemStyle: {
           emphasis: {
             shadowBlur: 10,
