@@ -1364,7 +1364,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #fffff6;
+    background: #632e4f;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3601,7 +3601,6 @@ figure.highlight {
 }
 .posts-expand .post-body img {
   box-sizing: border-box;
-  padding: 3px;
   border: 1px solid #ddd;
   border-radius: 10px;
 }
