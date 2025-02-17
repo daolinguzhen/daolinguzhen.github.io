@@ -29,7 +29,7 @@
 <meta property="og:description" content="计算器 * {   box-sizing: border-box;   margin: 0; }  .calculator {   background-color: #f2f2f2;   padding: 20px;   max-width: 400px;   margin: 0 auto;   border: solid 1px #ccc;   box-shadow: 0 2px 5px">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-05T03:15:10.000Z">
-<meta property="article:modified_time" content="2025-02-11T07:18:56.413Z">
+<meta property="article:modified_time" content="2025-02-17T02:47:06.526Z">
 <meta property="article:author" content="收录客">
 <meta name="twitter:card" content="summary">
 
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%99%A8"><span class="nav-text">计算器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A9%E6%B0%94"><span class="nav-text">天气</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%99%A8"><span class="nav-text">计算器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A9%E6%B0%94"><span class="nav-text">天气</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%B5%E4%B8%A4%E5%8F%A5%E8%AF%97"><span class="nav-text">念两句诗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9F%B3%E4%B9%90"><span class="nav-text">音乐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E9%A2%91"><span class="nav-text">视频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E5%8F%B0"><span class="nav-text">电台</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -699,6 +699,29 @@ function appendValue(buttonValue) {
 </script>
 
 <h3 id="天气"><a href="#天气" class="headerlink" title="天气"></a>天气</h3><iframe scrolling="no" src="https://widget.tianqiapi.com/?style=tr&skin=pitaya" frameborder="0" width="325" height="220" allowtransparency="true"></iframe>
+
+<h3 id="念两句诗"><a href="#念两句诗" class="headerlink" title="念两句诗"></a>念两句诗</h3><div class="poem-wrap">
+  <div class="poem-border poem-left"></div>
+  <div class="poem-border poem-right"></div>
+    <h>念两句诗</h>
+    <p id="poem">挑选中...</p>
+    <p id="info">
+  <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    jinrishici.load(function(result) {
+      poem.innerHTML = result.data.content
+      info.innerHTML = '【' + result.data.origin.dynasty + '】' + result.data.origin.author + '《' + result.data.origin.title + '》'
+      document.getElementById("poem").value(poem);
+      document.getElementById("info").value(info);  
+  });
+  </script>
+</div>
+
+<h3 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h3><p><audio src="http://music.163.com/song/media/outer/url?id=1900724679.mp3" style="max-height :100%; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" controls="controls" loop="loop" preload="meta">Your browser does not support the audio tag.</audio></p>
+<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><p><video width="480" height="320" controls=""><source src="/mp4/daolinguzhen.mp4"></video></p>
+<h3 id="电台"><a href="#电台" class="headerlink" title="电台"></a>电台</h3><div align=center>
+<iframe id="runtime" name="runtime" width="820" height="530" scrolling="yes" frameborder="0" src="https://www.cnr.cn/gbzb/"></iframe>
+</div>
       </div>
         <script type="text/javascript">
      var alltags = document.getElementsByClassName('tag-cloud-tags');
