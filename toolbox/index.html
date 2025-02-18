@@ -29,7 +29,7 @@
 <meta property="og:description" content="计算器 * {   box-sizing: border-box;   margin: 0; }  .calculator {   background-color: #f2f2f2;   padding: 20px;   max-width: 400px;   margin: 0 auto;   border: solid 1px #ccc;   box-shadow: 0 2px 5px">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-05T03:15:10.000Z">
-<meta property="article:modified_time" content="2025-02-17T09:02:09.966Z">
+<meta property="article:modified_time" content="2025-02-18T01:36:16.075Z">
 <meta property="article:author" content="收录客">
 <meta name="twitter:card" content="summary">
 
@@ -698,27 +698,7 @@ function appendValue(buttonValue) {
 }
 </script>
 
-<h3 id="日历"><a href="#日历" class="headerlink" title="日历"></a>日历</h3><div class="aside-box">
-  <div class="calendar">
-    <div class="calendar-header">
-      <span id="prev-month" class="fa fa-arrow-circle-o-left">←</span>
-      <div class="month-year" id="month-year"></div>
-      <span id="next-month" class="fa fa-arrow-circle-o-right">→</span>
-    </div>
-    <div class="days">
-      <div>日</div>
-      <div>一</div>
-      <div>二</div>
-      <div>三</div>
-      <div>四</div>
-      <div>五</div>
-      <div>六</div>
-    </div>
-    <div class="days" id="calendar-days"></div>
-  </div> 
-</div>
-
-<style>
+<h3 id="日历"><a href="#日历" class="headerlink" title="日历"></a>日历</h3><style>
 .calendar {
   width: 300px;
   background: #fff;
@@ -726,9 +706,6 @@ function appendValue(buttonValue) {
   box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
   overflow: hidden;
   transition: box-shadow 0.3s ease;
-}
-.calendar:hover {
-  box-shadow: 0 6px 10px rgb(0 0 0 / 20%);
 }
 .calendar-header {
   display: flex;
@@ -743,34 +720,14 @@ function appendValue(buttonValue) {
   cursor: pointer;
   transition: transform 0.3s ease;
 }
-.fa, .fas {
-  font-weight: 900;
-}
-.fa, .far, .fas {
-  font-family: "Font Awesome 5 Free";
-}
-.fa, .fab, .fad, .fal, .far, .fas {
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-}
-.month-year {
-  font-size: 18px;
-  font-weight: bold;
-  transition: color 0.3s ease;
+.calendar-header span:hover {
+  background: #87CEEB20;
 }
 .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
   padding: 10px;
-}
-.days div.selected {
-    background: linear-gradient(135deg, #1296DC, #87CEEB);
-    color: #fff;
 }
 .days div {
   display: flex;
@@ -783,70 +740,106 @@ function appendValue(buttonValue) {
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
 }
+#calendar-days div:not(:empty):hover {
+  background: #87CEEB20;
+  cursor: pointer;
+}
+.today {
+  background: #87CEEB !important;
+  color: white !important;
+  font-weight: bold;
+}
 </style>
+<body>
+    <div class="container body">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="aside-box">
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <span id="prev-month">←</span>
+                            <div class="month-year" id="month-year"></div>
+                            <span id="next-month">→</span>
+                        </div>
+                        <div class="days">
+                            <div>日</div>
+                            <div>一</div>
+                            <div>二</div>
+                            <div>三</div>
+                            <div>四</div>
+                            <div>五</div>
+                            <div>六</div>
+                        </div>
+                        <div class="days" id="calendar-days"></div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+
 <script>
-  function go(url) {
-    window.location.href = url;
-  }
-  const calendarDays = document.getElementById("calendar-days");
-  const monthYear = document.getElementById("month-year");
-  const prevMonth = document.getElementById("prev-month");
-  const nextMonth = document.getElementById("next-month");
+        function go(url) {
+            window.location.href = url;
+        }
+        const calendarDays = document.getElementById("calendar-days");
+        const monthYear = document.getElementById("month-year");
+        const prevMonth = document.getElementById("prev-month");
+        const nextMonth = document.getElementById("next-month");
 
-  let currentDate = new Date();
+        let currentDate = new Date();
 
-  function renderCalendar(year, month) {
-    const firstDay = new Date(year, month).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+        function renderCalendar(year, month) {
+            const firstDay = new Date(year, month).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    const date = new Date(year, month, 1);
-    const today = new Date();
-    const todayDate = today.getDate();
-    const todayMonth = today.getMonth();
-    const todayYear = today.getFullYear();
+            const date = new Date(year, month, 1);
+            const today = new Date();
+            const todayDate = today.getDate();
+            const todayMonth = today.getMonth();
+            const todayYear = today.getFullYear();
 
-    calendarDays.innerHTML = "";
-    for (let i = 0; i < firstDay; i++) {
-      const dayDiv = document.createElement("div");
-      calendarDays.appendChild(dayDiv);
-    }
+            calendarDays.innerHTML = "";
+            for (let i = 0; i < firstDay; i++) {
+                const dayDiv = document.createElement("div");
+                calendarDays.appendChild(dayDiv);
+            }
 
-    for (let i = 1; i <= daysInMonth; i++) {
-      const dayDiv = document.createElement("div");
-      dayDiv.textContent = i;
-      if (i === todayDate && month === todayMonth && year === todayYear) {
-        dayDiv.classList.add("today");
-      }
-      calendarDays.appendChild(dayDiv);
-    }
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dayDiv = document.createElement("div");
+                dayDiv.textContent = i;
+                if (i === todayDate && month === todayMonth && year === todayYear) {
+                    dayDiv.classList.add("today");
+                }
+                calendarDays.appendChild(dayDiv);
+            }
 
-    monthYear.textContent = `${year}年${month + 1}月`;
-  }
+            monthYear.textContent = `${year}年${month + 1}月`;
+        }
 
-  renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+        renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
 
-  prevMonth.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-  });
+        prevMonth.addEventListener("click", () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+        });
 
-  nextMonth.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-  });
+        nextMonth.addEventListener("click", () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+        });
 
-  calendarDays.addEventListener("click", (e) => {
-    if (e.target.tagName === "DIV") {
-      const selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), e.target.textContent);
-      const selectedDayDivs = document.querySelectorAll("#calendar-days div");
-      selectedDayDivs.forEach((div) => div.classList.remove("selected"));
-      e.target.classList.add("selected");
-      console.log(`Selected date: ${selectedDate.toDateString()}`);
-    }
-  });
+        calendarDays.addEventListener("click", (e) => {
+            if (e.target.tagName === "DIV") {
+                const selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), e.target.textContent);
+                const selectedDayDivs = document.querySelectorAll("#calendar-days div");
+                selectedDayDivs.forEach((div) => div.classList.remove("selected"));
+                e.target.classList.add("selected");
+                console.log(`Selected date: ${selectedDate.toDateString()}`);
+            }
+        });
 </script>
-
-
+</body>
 
 <h3 id="天气"><a href="#天气" class="headerlink" title="天气"></a>天气</h3><iframe scrolling="no" src="https://widget.tianqiapi.com/?style=tr&skin=pitaya" frameborder="0" width="325" height="220" allowtransparency="true"></iframe>
 
