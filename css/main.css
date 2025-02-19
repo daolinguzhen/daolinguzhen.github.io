@@ -1364,7 +1364,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #ffd263;
+    background: #839dbe;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3642,7 +3642,7 @@ figure.highlight {
   bottom: 0;
   left: 0;
   z-index: -1;
-  background: var(--body-bg-color);
+  background: #87cefa;
   content: ' ';
   transition: transform 0.3s ease-out;
   transform: scale(0);
@@ -3667,24 +3667,18 @@ figure.highlight {
 .flinks-block .flinks-list-items .flinks-list-item .flinks-item-icon img {
   width: 100%;
   height: 100%;
-  -webkit-transition: filter 375ms ease-in 0.2s, -webkit-transform 0.3s;
-  -moz-transition: filter 375ms ease-in 0.2s, -moz-transform 0.3s;
-  -o-transition: filter 375ms ease-in 0.2s, -o-transform 0.3s;
-  -ms-transition: filter 375ms ease-in 0.2s, -ms-transform 0.3s;
   transition: filter 375ms ease-in 0.2s, transform 0.3s;
   object-fit: cover;
 }
 .flinks-block .flinks-list-items .flinks-list-item .flinks-item-name,
 .flinks-block .flinks-list-items .flinks-list-item .flinks-item-desc {
   overflow: hidden;
-  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .flinks-block .flinks-list-items .flinks-list-item .flinks-item-name {
   padding: 20px 0 0 0;
   height: 20px;
-  font-weight: 700;
   font-size: 1em;
   font-weight: bold;
 }
