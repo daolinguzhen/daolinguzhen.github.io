@@ -1364,7 +1364,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #839dbe;
+    background: #5742ff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3756,6 +3756,34 @@ figure.highlight {
   .poem-border {
     display: none;
   }
+}
+/* 页脚徽章 */
+a.badge {
+  border-bottom: none;
+  margin: 10px 5px;
+}
+a.badge a {
+  color: var(--link-color);
+  cursor: pointer;
+  outline: 0;
+  text-decoration: none;
+  overflow-wrap: break-word;
+  background: 0 0;
+}
+a.badge img.badge {
+  border-radius: 5px;
+  display: inline;
+}
+a.badge embed,
+a.badge iframe,
+a.badge img,
+a.badge video {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+a.badge img {
+  border-style: none;
 }
 @keyframes sliding {
   to {
