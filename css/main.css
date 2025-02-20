@@ -1364,7 +1364,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #0e0a5c;
+    background: #6a40c9;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3485,11 +3485,8 @@ samp {
 /* strong标签 */
 b,
 strong {
-  background-image: linear-gradient(to right, #ff4500, #ffa500, #ffd700, #90ee90, #0ff, #1e90ff, #9370db, #ff69b4, #ff4500);
-  background-size: 110vw;
-  -webkit-background-clip: text;
-  color: rgba(0,0,0,0.1); /* transparent IE 不支持 */
-  animation: sliding 30s linear infinite;
+  color: #f687b3;
+  font-weight: bolder;
 }
 /* 帖子摘要包装器 */
 .post-body .post-summary-wrapper {
@@ -3801,10 +3798,5 @@ a.badge img {
   }
   to {
     background-position: -20px 100%;
-  }
-}
-@keyframes sliding {
-  to {
-    background-position: -2000vw;
   }
 }
