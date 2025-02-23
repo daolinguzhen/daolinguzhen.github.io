@@ -1364,7 +1364,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #6c635b;
+    background: #11c4eb;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2935,7 +2935,7 @@ header.header {
   color: var(--brand-color);
   font-size: 1em;
 }
-/* 侧边栏菜单样式美化 */
+/* 侧边栏菜单样式 */
 .site-nav li {
   width: 48%;
 }
@@ -3566,10 +3566,13 @@ strong {
   object-fit: scale-down;
 }
 /* 侧边栏透明度 */
-.sidebar {
-  opacity: 0.9;
+header.header {
+  background: rgba(255,255,255,0.8);
 }
-/* 文章内容透明度 */
+.sidebar {
+  opacity: 0.8;
+}
+/* 文章透明度 */
 .main-inner {
   opacity: 0.9;
 }
@@ -3581,7 +3584,7 @@ strong {
 figure.highlight {
   opacity: 0.9;
 }
-/* Flinks友链 */
+/* 友情链接 */
 .flinks-block .flinks-header {
   text-align: center;
   font-weight: bold;
