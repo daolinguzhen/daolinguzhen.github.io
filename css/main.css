@@ -1369,7 +1369,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #c3e9fc;
+    background: #6716d1;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3056,11 +3056,11 @@ body {
 }
 /* 鼠标移动到带有链接的文本颜色 */
 a,
-span.exturl {
+span.exturl> {
   border-bottom: none;
 }
 a:hover,
-span.exturl:hover {
+span.exturl>:hover {
   color: #ff106c;
 }
 /* 鼠标框选文本内容时的颜色 */
